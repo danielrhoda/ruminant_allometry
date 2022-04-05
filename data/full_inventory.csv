@@ -1,0 +1,203 @@
+scientific_name,common_name,family,subfamily,tribe,genus,specific_epithet,BM_kg,percent_grass,diet_category,habitat,ref,max_BM_kg_animaldiversity,max_BM_kg_castello,HL_male_cm,HL_female_cm,BM_Lemaitre_etal,male_antler_weight_g,max_BM,interspecific_GM,intraspecific_GM,animaldiversity
+Moschiola_meminna,Indian chevrotain,Tragulidae,Tragulinae,Tragulini,Moschiola,meminna,2.45,2,BR,,Mendoza et al (2006),,,,,,",",2.45,,,https://animaldiversity.org/accounts/Moschiola_meminna/
+Moschiola_indica,Indian chevrotain,Tragulidae,Tragulinae,Tragulini,Moschiola,indica,2.45,2,BR,,,,,,,,,2.45,,,https://animaldiversity.org/accounts/Moschiola_indica/
+Tragulus_napu,greater mouse-deer,Tragulidae,Tragulinae,Tragulini,Tragulus,napu,4,0,BR,,Schiviz et al (2008),,,,,,,4,,,https://animaldiversity.org/accounts/Tragulus_napu/
+Tragulus_kanchil,lesser mouse-deer,Tragulidae,Tragulinae,Tragulini,Tragulus,kanchil,2.4,,,,http://www.ultimateungulate.com/Artiodactyla/Tragulus_kanchil.html,,,,,,,2.4,,,https://animaldiversity.org/accounts/Tragulus_kanchil/
+Tragulus_javanicus,lesser mouse-deer,Tragulidae,Tragulinae,Tragulini,Tragulus,javanicus,2.25,10,BR,,Clauss et al (2007 CBP),,,,,,,2.25,,,https://animaldiversity.org/accounts/Tragulus_javanicus/
+Hyemoschus_aquaticus,water chevrotain/fanged deer,Tragulidae,Tragulinae,Tragulini,Hyemoschus,aquaticus,10.85,0,BR,Closed,Mendoza et al (2006),,,,,,,10.85,,,https://animaldiversity.org/accounts/Hyemoschus_aquaticus/
+Muntiacus_reevesi,Reeve's muntjac,Cervidae,Cervinae,Muntiacini,Muntiacus,reevesi,13.5,10,BR,Closed,Schiviz et al (2008),,,11.4,,13.5,70,13.5,,,https://animaldiversity.org/accounts/Muntiacus_reevesi/
+Muntiacus_muntjak,Indian muntjac,Cervidae,Cervinae,Muntiacini,Muntiacus,muntjak,14,10,BR,Closed,Sacher and Staffeldt (1974),,,14.2,,19,,19,,,https://animaldiversity.org/accounts/Muntiacus_muntjak/
+Muntiacus_feae,Fea's muntjac,Cervidae,Cervinae,Muntiacini,Muntiacus,feae,22,,,,AD,22,,,,,,22,,,https://animaldiversity.org/accounts/Muntiacus_feae/
+Muntiacus_crinifrons,black muntjac,Cervidae,Cervinae,Muntiacini,Muntiacus,crinifrons,28.5,,,,AD,28.5,,3.55,,23,,28.5,,,https://animaldiversity.org/accounts/Muntiacus_crinifrons/
+Muntiacus_vuquangensis,giant muntjac,Cervidae,Cervinae,Muntiacini,Muntiacus,vuquangensis,50,,,,AD,50,,22.75,,45,,50,,,https://animaldiversity.org/accounts/Muntiacus_vuquangensis/
+Muntiacus_rooseveltorum,Roosevelt muntjac,Cervidae,Cervinae,Muntiacini,Muntiacus,rooseveltorum,25.6,,,,"no source, for figure 1 purposes I'm saying it's BM is average for genus",,,,,,,25.6,,,https://animaldiversity.org/accounts/Muntiacus_rooseveltorum/
+Muntiacus_putaoensis,leaf deer,Cervidae,Cervinae,Muntiacini,Muntiacus,putaoensis,,,,,,12,,3.25,,12,,12,,,https://animaldiversity.org/accounts/Muntiacus_putaoensis/
+Muntiacus_truongsonensis,Annamite muntjac,Cervidae,Cervinae,Muntiacini,Muntiacus,truongsonensis,25.6,,,,"no source, for figure 1 purposes I'm saying it's BM is average for genus",,,,,,,25.6,,,https://animaldiversity.org/accounts/Muntiacus_truongsonensis/
+Elaphodus_cephalophus,tufted deer,Cervidae,Cervinae,Muntiacini,Elaphodus,cephalophus,33.5,0,BR,Closed,Mendoza et al (2006),50,,2.5,,18,,50,,,https://animaldiversity.org/accounts/Elaphodus_cephalophus/
+Rucervus_eldii,Eld's deer,Cervidae,Cervinae,Cervini,Rucervus,eldii,73,89,GR,Open,Clauss pers obs (2005),,,97.15,,105,3400,105,,,https://animaldiversity.org/accounts/Rucervus_eldii/
+Elaphurus_davidianus,Pere David's deer,Cervidae,Cervinae,Cervini,Elaphurus,davidianus,149,75,GR,Mixed,Mendoza et al (2006),,,73.7,,214,7900,214,,,https://animaldiversity.org/accounts/Elaphurus_davidianus/
+Rusa_alfredi,Visayan spotted deer,Cervidae,Cervinae,Cervini,Rusa,alfredi,59,,,,AD,59,,,,,,59,,,https://animaldiversity.org/accounts/Rusa_alfredi/
+Cervus_nippon,sika deer,Cervidae,Cervinae,Cervini,Cervus,nippon,53,50,IM,Mixed,Mendoza et al (2006),80,,48,,52,2520,80,,,https://animaldiversity.org/accounts/Cervus_nippon/
+Cervus_elaphus,elk/red deer/wapiti,Cervidae,Cervinae,Cervini,Cervus,elaphus,217.7509,39.1,IM,Mixed,Sacher and Staffeldt (1974),,,93.6,,250,6300,250,,,https://animaldiversity.org/accounts/Cervus_elaphus/
+Rusa_timorensis,Javan rusa,Cervidae,Cervinae,Cervini,Rusa,timorensis,160,,,,AD,160,,67.5,,95.5,2500,160,,,https://animaldiversity.org/accounts/Rusa_timorensis/
+Rusa_unicolor,sambar,Cervidae,Cervinae,Cervini,Rusa,unicolor,160.4133,45,IM,Mixed,Sacher and Staffeldt (1974),260,,104.9,,192,8200,260,,,https://animaldiversity.org/accounts/Rusa_unicolor/
+Cervus_albirostris,white-lipped deer/Thorold's deer,Cervidae,Cervinae,Cervini,Cervus,albirostris,140,,,,AD,140,,115,,204,2950,204,,,https://animaldiversity.org/accounts/Przewalskium_albirostris/
+Megaloceros_giganteus,Irish elk,Cervidae,Cervinae,Cervini,Megaloceros,giganteus,700,,,,"Moen et al 1999, Gould 1977",,,,,,,700,,,
+Dama_dama,European fallow deer,Cervidae,Cervinae,Cervini,Dama,dama,56.25,46,IM,Mixed,Sacher and Staffeldt (1974),,,61.5,,67,3500,67,,,https://animaldiversity.org/accounts/Dama_dama/
+Dama_mesopotamica,Persian fallow deer,Cervidae,Cervinae,Cervini,Dama,mesopotamica,56.25,46,IM,Mixed,Sacher and Staffeldt (1974),,,,,,,56.25,,,https://animaldiversity.org/accounts/Dama_mesopotamica/
+Rucervus_schomburgki,Schomburgk's deer,Cervidae,Cervinae,Cervini,Rucervus,schomburgki,143,,,,"no source, same as R. duvaucelli for FIG1",,,,,,,143,,,https://animaldiversity.org/accounts/Rucervus_schomburgki/
+Rucervus_duvaucelii,barasingha,Cervidae,Cervinae,Cervini,Rucervus,duvaucelii,143,90,GR,Mixed,Mendoza et al (2006),181,,81.3,,236,7700,236,,,https://animaldiversity.org/accounts/Rucervus_duvaucelii/
+Axis_porcinus,hog deer,Cervidae,Cervinae,Cervini,Axis,porcinus,33.2555,50,IM,Mixed,Mendoza et al (2006),50,,39.9,,41,,50,,,https://animaldiversity.org/accounts/Axis_porcinus/
+Axis_kuhlii,Bawean deer,Cervidae,Cervinae,Cervini,Axis,kuhlii,55,,,,Smith et all 2011,,,,,,,55,,,https://animaldiversity.org/accounts/Axis_kuhlii/
+Axis_axis,chital,Cervidae,Cervinae,Cervini,Axis,axis,62.3456,70,IM,Open,Clauss et al (2011 JZool),45,,84.5,,89.5,2300,89.5,,,https://animaldiversity.org/accounts/Axis_axis/
+Hydropotes_inermis,water deer,Cervidae,Hydropotinae,Hydropotini,Hydropotes,inermis,14,50,IM,Open,Mendoza et al (2006),18.5,,,,,,18.5,,,https://animaldiversity.org/accounts/Hydropotes_inermis/
+Capreolus_pygargus,eastern roe deer,Cervidae,Capreolinae,Capreolini,Capreolus,pygargus,102,,,,Smith et all 2011,,,30.45,,42,,42,,,https://animaldiversity.org/accounts/Capreolus_pygargus/
+Capreolus_capreolus,western roe deer,Cervidae,Capreolinae,Capreolini,Capreolus,capreolus,22.5,5.3,BR,Closed,Schiviz et al (2008),30,,23.35,,28,300,30,,,https://animaldiversity.org/accounts/Capreolus_capreolus/
+Rangifer_tarandus,caribou/reindeer,Cervidae,Capreolinae,Rangiferini,Rangifer,tarandus,86.034,33.1,IM,Mixed,Crile and Quiring (1940),318,,91,,106.5,12000,318,,,https://animaldiversity.org/accounts/Rangifer_tarandus/
+Pudu_mephistophiles,northern pudu,Cervidae,Capreolinae,Rangiferini,Pudu,mephistophiles,9,3,BR,Closed,Mendoza et al (2006),,,,,,,9,,,https://animaldiversity.org/accounts/Pudu_mephistophiles/
+Mazama_rufina,little red brocket,Cervidae,Capreolinae,Rangiferini,Mazama,rufina,25.998,,,,Smith et all 2011,,,,,,,25.998,,,https://animaldiversity.org/accounts/Mazama_rufina/
+Odocoileus_virginianus,white-tailed deer,Cervidae,Capreolinae,Rangiferini,Odocoileus,virginianus,55.5086,9.9,BR,Mixed,Mendoza et al (2002),137,,65.6,,154.5,1500,154.5,,,https://animaldiversity.org/accounts/Odocoileus_virginianus/
+Odocoileus_hemionus,mule deer,Cervidae,Capreolinae,Rangiferini,Odocoileus,hemionus,54.2126,11,BR,Mixed,Hummel et al (2006),150,,88.5,,112.5,1650,150,,,https://animaldiversity.org/accounts/Odocoileus_hemionus/
+Mazama_nana,pygmy brocket,Cervidae,Capreolinae,Rangiferini,Mazama,nana,16.4999,,,,Smith et all 2011,,,,,,,16.4999,,,https://animaldiversity.org/accounts/Mazama_nana/
+Mazama_bororo,São Paulo Bororó,Cervidae,Capreolinae,Rangiferini,Mazama,bororo,25,,,,https://www.fcnym.unlp.edu.ar/catedras/proteccion/tp3/Neotropical01.pdf,,,,,,,25,,,https://animaldiversity.org/accounts/Mazama_bororo/
+Mazama_americana,Red brocket,Cervidae,Capreolinae,Rangiferini,Mazama,americana,22.7997,1,BR,Closed,Mendoza et al (2006),55,,11.5,,24.5,56,55,,,https://animaldiversity.org/accounts/Mazama_americana/
+Mazama_temama,Central American red brocket,Cervidae,Capreolinae,Rangiferini,Mazama,temama,21.4,,,,average of other Mazama for Fig1,,,,,,,21.4,,,https://animaldiversity.org/accounts/Mazama_temama/
+Mazama_pandora,Yucatan brown brocket,Cervidae,Capreolinae,Rangiferini,Mazama,pandora,21.4,,,,average of other Mazama for Fig1,,,,,,,21.4,,,https://animaldiversity.org/accounts/Mazama_pandora/
+Hippocamelus_antisensis,taruca,Cervidae,Capreolinae,Rangiferini,Hippocamelus,antisensis,68.5993,,,,Smith et all 2011,68.6,,,,,,68.6,,,https://animaldiversity.org/accounts/Hippocamelus_antisensis/
+Mazama_gouazoubira,South American brown brocket,Cervidae,Capreolinae,Rangiferini,Mazama,gouazoubira,16.3001,,,,Smith et all 2011,25,,9.25,,18,,25,,,https://animaldiversity.org/accounts/Mazama_gouazoubira/
+Hippocamelus_bisulcus,Chilean guemal,Cervidae,Capreolinae,Rangiferini,Hippocamelus,bisulcus,70.0003,2,BR,Closed,Mendoza et al (2006),,,30,,95,,95,,,https://animaldiversity.org/accounts/Hippocamelus_bisulcus/
+Ozotoceros_bezoarticus,Pampas deer,Cervidae,Capreolinae,Rangiferini,Ozotoceros,bezoarticus,40,75,GR,Open,Mendoza et al (2006),40,,21,,33.5,257,40,,,https://animaldiversity.org/accounts/Ozotoceros_bezoarticus/
+Mazama_nemorivaga,,Cervidae,Capreolinae,Rangiferini,Mazama,nemorivaga,21.4,,,,average of other Mazama for Fig1,,,,,,,21.4,,,https://animaldiversity.org/accounts/Mazama_nemorivaga/
+Blastocerus_dichotomus,marsh deer,Cervidae,Capreolinae,Rangiferini,Blastocerus,dichotomus,86.6662,24,BR,Open,Mendoza et al (2006),125,,60,,130,,130,,,https://animaldiversity.org/accounts/Blastocerus_dichotomus/
+Pudu_puda,southern pudu,Cervidae,Capreolinae,Rangiferini,Pudu,puda,9.7499,3,BR,Closed,Mendoza et al (2006),15,,8.5,,13,13,15,,,https://animaldiversity.org/accounts/Pudu_puda/
+Alces_americanus,American moose/moose,Cervidae,Capreolinae,Alceini,Alces,americanus,600,,,,AD,600,,,,,,600,,,https://animaldiversity.org/accounts/Alces_americanus/
+Alces_alces,Eurasian moose/Eaurasian elk,Cervidae,Capreolinae,Alceini,Alces,alces,355,5,BR,Closed,Mendoza et al (2006),771,,144,,482.5,11000,771,,,https://animaldiversity.org/accounts/Alces_alces/
+Moschus_leucogaster,Himilayan musk deer,Moschidae,Moschinae,Moschini,Moschus,leucogaster,,,,,,18,,,,,,18,,,https://animaldiversity.org/accounts/Moschus_leucogaster/
+Moschus_fuscus,dusky musk deer,Moschidae,Moschinae,Moschini,Moschus,fuscus,,,,,,15,,,,,,15,,,https://animaldiversity.org/accounts/Moschus_fuscus/
+Moschus_chrysogaster,alpine musk deer,Moschidae,Moschinae,Moschini,Moschus,chrysogaster,,,,,,15,,,,,,15,,,https://animaldiversity.org/accounts/Moschus_chrysogaster/
+Moschus_anhuiensis,,Moschidae,Moschinae,Moschini,Moschus,anhuiensis,,,,,average of moschus for fig1,,,,,,,16,,,https://animaldiversity.org/accounts/Moschus_anhuiensis/
+Moschus_berezovskii,,Moschidae,Moschinae,Moschini,Moschus,berezovskii,,,,,average of moschus for fig1,,,,,,,16,,,https://animaldiversity.org/accounts/Moschus_berezovskii/
+Moschus_moschiferus,Siberian musk deer,Moschidae,Moschinae,Moschini,Moschus,moschiferus,13,2.3,BR,Closed,Mendoza et al (2006),17,,,,,,17,,,https://animaldiversity.org/accounts/Moschus_moschiferus/
+Tragelaphus_imberbis,lesser kudu,Bovidae,Bovinae,Tragelaphini,Tragelaphus,imberbis,,,,,,,105,90,,,,105,,,https://animaldiversity.org/accounts/Tragelaphus_imberbis/
+Tragelaphus_oryx,,Bovidae,Bovinae,Tragelaphini,Tragelaphus,oryx,569.9936,10,BR,Mixed,Sacher and Staffeldt (1974),,1000,65,68,,,1000,,,https://animaldiversity.org/accounts/Tragelaphus_oryx/
+Tragelaphus_derbianus,,Bovidae,Bovinae,Tragelaphini,Tragelaphus,derbianus,680,5,BR,Mixed,Stoeckman (1975),,900,120,,,,900,,,https://animaldiversity.org/accounts/Tragelaphus_derbianus/
+Tragelaphus_scriptus,bushbuck,Bovidae,Bovinae,Tragelaphini,Tragelaphus,scriptus,43.2504,10,BR,Mixed,Crile and Quiring (1940),80,80,55,0,,,80,,,https://animaldiversity.org/accounts/Tragelaphus_scriptus/
+Tragelaphus_spekii,sitatunga,Bovidae,Bovinae,Tragelaphini,Tragelaphus,spekii,77.9992,67.5,IM,Mixed,Mendoza et al (2006),125,125,90,0,,,125,,,https://animaldiversity.org/accounts/Tragelaphus_spekii/
+Tragelaphus_eurycerus,bongo,Bovidae,Bovinae,Tragelaphini,Tragelaphus,eurycerus,329.0031,20,BR,Closed,Mendoza et al (2006),405,400,100,,,,405,,,https://animaldiversity.org/accounts/Tragelaphus_eurycerus/
+Tragelaphus_strepsiceros,greater kudu,Bovidae,Bovinae,Tragelaphini,Tragelaphus,strepsiceros,213.501,5,BR,Mixed,Schiviz et al (2008),315,315,140,0,,,315,,,https://animaldiversity.org/accounts/Tragelaphus_strepsiceros/
+Tragelaphus_angasii,nyala,Bovidae,Bovinae,Tragelaphini,Tragelaphus,angasii,86.6004,20,BR,Mixed,Mendoza et al (2006),126,140,83,0,,,140,,,https://animaldiversity.org/accounts/Tragelaphus_angasii/
+Pseudoryx_nghetinhensis,Saola/Vu Quang ox,Bovidae,Bovinae,Tragelaphini,Pseudoryx,nghetinhensis,92.5,0,BR,Closed,Bro-Jorgensen (2008),100,100,55,55,,,100,,,https://animaldiversity.org/accounts/Pseudoryx_nghetinhensis/
+Bos_sauveli,kouprey,Bovidae,Bovinae,Bovini,Bos,sauveli,800,78.1,GR,Mixed,Bro-Jorgensen (2008),910,900,80,40,,,910,,,https://animaldiversity.org/accounts/Bos_sauveli/
+Bos_gaurus,gaur,Bovidae,Bovinae,Bovini,Bos,gaurus,,,,,,,1000,85,,,,1000,,,https://animaldiversity.org/accounts/Bos_gaurus/
+Bos_grunniens,yak,Bovidae,Bovinae,Bovini,Bos,grunniens,333,85.5,GR,Mixed,Sacher and Staffeldt (1974),1000,593,95,51,,,1000,,,https://animaldiversity.org/accounts/Bos_grunniens/
+Bos_mutus,yak,Bovidae,Bovinae,Bovini,Bos,mutus,,,,,,,1000,95,51,,,1000,,,https://animaldiversity.org/accounts/Bos_mutus/
+Bison_bison,American bison,Bovidae,Bovinae,Bovini,Bison,bison,579.2553,84,GR,Open,Burton (2006),900,,,,,,900,,,https://animaldiversity.org/accounts/Bison_bison/
+Bos_taurus,aurochs/domesticated cattle,Bovidae,Bovinae,Bovini,Bos,taurus,900,69.7,IM,Open,Sacher and Staffeldt (1974),1363,1300,100,,,,1363,,,https://animaldiversity.org/accounts/Bos_taurus/
+Bos_primigenius,,Bovidae,Bovinae,Bovini,Bos,primigenius,917.3,,,,average of Bos,,,,,,,917.3,,,https://animaldiversity.org/accounts/Bos_primigenius/
+Bos_indicus,,Bovidae,Bovinae,Bovini,Bos,indicus,,,,,,,200,100,,,,200,,,https://animaldiversity.org/accounts/Bos_indicus/
+Bos_javanicus,banteng,Bovidae,Bovinae,Bovini,Bos,javanicus,700,80,GR,Open,Scott (1985),800,800,87,,,,800,,,https://animaldiversity.org/accounts/Bos_javanicus/
+Bos_frontalis,gayal,Bovidae,Bovinae,Bovini,Bos,frontalis,800,94,GR,Mixed,Clauss et al (2007 CBP),1000,560,85,,,,1000,,,https://animaldiversity.org/accounts/Bos_frontalis/
+Bison_bonasus,European bison/wisent,Bovidae,Bovinae,Bovini,Bison,bonasus,500,68,IM,Closed,Mendoza et al (2006),1000,1000,,,,,1000,,,https://animaldiversity.org/accounts/Bison_bonasus/
+Syncerus_caffer,American buffalo,Bovidae,Bovinae,Bovini,Syncerus,caffer,580.0027,90,GR,Mixed,Crile and Quiring (1940),835,900,160,,,,900,,,https://animaldiversity.org/accounts/Syncerus_caffer/
+Bubalus_quarlesi,mountain anoa,Bovidae,Bovinae,Bovini,Bubalus,quarlesi,,,,,,300,150,20,,,,300,,,https://animaldiversity.org/accounts/Bubalus_quarlesi/
+Bubalus_depressicornis,anoa,Bovidae,Bovinae,Bovini,Bubalus,depressicornis,300,38.5,IM,Closed,Clauss et al (2007 CBP),225,250,37,,,,300,,,https://animaldiversity.org/accounts/Bubalus_depressicornis/
+Bubalus_arnee,asian water buffalo,Bovidae,Bovinae,Bovini,Bubalus,arnee,825,51,IM,Mixed,Schiviz et al (2008),,1200,,,,,1200,,,https://animaldiversity.org/accounts/Bubalus_arnee/
+Bubalus_mindorensis,tamaraw,Bovidae,Bovinae,Bovini,Bubalus,mindorensis,233.3333,44.75,IM,Mixed,Bro-Jorgensen (2008),300,274,51,,,,300,,,https://animaldiversity.org/accounts/Bubalus_mindorensis/
+Tetracerus_quadricornis,four-horned antelope,Bovidae,Bovinae,Boselaphini,Tetracerus,quadricornis,19,0,BR,Mixed,Mendoza et al (2006),25,25,12,0,,,25,,,https://animaldiversity.org/accounts/Tetracerus_quadricornis/
+Boselaphus_tragocamelus,nilgai,Bovidae,Bovinae,Boselaphini,Boselaphus,tragocamelus,169,35.2,IM,Mixed,Pihlstroem et al (2005),240,290,25,0,,,290,,,https://animaldiversity.org/accounts/Boselaphus_tragocamelus/
+Raphicerus_melanotis,Cape grysbok,Bovidae,Antilopinae,Neotragini,Raphicerus,melanotis,10.2499,30,IM,Mixed,Mendoza et al (2006),23,13,8,0,,,23,,,https://animaldiversity.org/accounts/Raphicerus_melanotis/
+Raphicerus_campestris,steenbok,Bovidae,Antilopinae,Neotragini,Raphicerus,campestris,10.5,10,BR,Open,Crile and Quiring (1940),16,16,19,0,,,16,,,https://animaldiversity.org/accounts/Raphicerus_campestris/
+Raphicerus_sharpei,Sharpe's grysbok,Bovidae,Antilopinae,Neotragini,Raphicerus,sharpei,9.4999,30,IM,Mixed,Perez-Barberia and Gordon (2001),16,11,4.5,0,,,16,,,https://animaldiversity.org/accounts/Raphicerus_sharpei/
+Madoqua_saltiana,Salt's dik-dik,Bovidae,Antilopinae,Neotragini,Madoqua,saltiana,3.25,10,BR,Mixed,Heywood (2010),6,4,9,0,,,6,,,https://animaldiversity.org/accounts/Madoqua_saltiana/
+Madoqua_kirkii,Kirk's dik-dik,Bovidae,Antilopinae,Neotragini,Madoqua,kirkii,5.3001,17,BR,Open,Crile and Quiring (1940),6,6.5,11.4,0,,,6.5,,,https://animaldiversity.org/accounts/Madoqua_kirkii/
+Madoqua_guentheri,Günther's dik-dik,Bovidae,Antilopinae,Neotragini,Madoqua,guentheri,7.5,5,BR,Open,Mendoza et al (2006),5,5,9.8,0,,,7.5,,,https://animaldiversity.org/accounts/Madoqua_guentheri/
+Dorcatragus_megalotis,beira,Bovidae,Antilopinae,Neotragini,Dorcatragus,megalotis,10.2499,5,BR,Open,Mendoza et al (2006),,13,10,0,,,13,,,https://animaldiversity.org/accounts/Dorcatragus_megalotis/
+Saiga_tatarica,saiga,Bovidae,Antilopinae,Saigini,Saiga,tatarica,29,26,IM,Open,Mendoza et al (2006),45,51,38,0,,,51,,,https://animaldiversity.org/accounts/Saiga_tatarica/
+Nanger_granti,Grant's gazelle,Bovidae,Antilopinae,Antilopini,Nanger,granti,54.9997,50,IM,Open,Mendoza et al (2006),65,80,80,43,,,80,,,https://animaldiversity.org/accounts/Nanger_granti/
+Nanger_dama,dama gazelle,Bovidae,Antilopinae,Antilopini,Nanger,dama,61.1,47.5,IM,Open,Bro-Jorgensen (2008),75,75,43,,,,75,,,https://animaldiversity.org/accounts/Nanger_dama/
+Nanger_soemmerringii,Sömmerring's gazelle/Soemmerring's gazelle,Bovidae,Antilopinae,Antilopini,Nanger,soemmerringii,40,50,IM,Open,Heywood (2010),,45,58,,,,45,,,https://animaldiversity.org/accounts/Nanger_soemmerringii/
+Eudorcas_thomsonii,Thomson's gazelle,Bovidae,Antilopinae,Antilopini,Eudorcas,thomsonii,20.4998,75,GR,Open,Perez-Barberia and Gordon (2001),35,25,43,15,,,35,,,https://animaldiversity.org/accounts/Eudorcas_thomsonii/
+Eudorcas_rufifrons,red-fronted gazelle,Bovidae,Antilopinae,Antilopini,Eudorcas,rufifrons,26.9998,40,IM,Open,Perez-Barberia and Gordon (2001),,30,40,40,,,30,,,https://animaldiversity.org/accounts/Eudorcas_rufifrons/
+Gazella_leptoceros,rhim gazelle,Bovidae,Antilopinae,Antilopini,Gazella,leptoceros,22.2,50,IM,Open,Stoeckman (1975),,30,41,38,,,30,,,https://animaldiversity.org/accounts/Gazella_leptoceros/
+Gazella_cuvieri,Cuvier's gazelle,Bovidae,Antilopinae,Antilopini,Gazella,cuvieri,25,37.65,IM,Open,Bro-Jorgensen (2008),,35,37,30,,,35,,,https://animaldiversity.org/accounts/Gazella_cuvieri/
+Gazella_subgutturosa,goitered gazelle,Bovidae,Antilopinae,Antilopini,Gazella,subgutturosa,28.5,38.4,IM,Open,Pihlstroem et al (2005),43,33,43,0,,,43,,,https://animaldiversity.org/accounts/Gazella_subgutturosa/
+Gazella_bennettii,Indian gazelle,Bovidae,Antilopinae,Antilopini,Gazella,bennettii,18.9167,15,BR,Open,Clauss (unpubl),25,23,34,15,,,25,,,https://animaldiversity.org/accounts/Gazella_bennettii/
+Gazella_spekei,Speke's gazelle,Bovidae,Antilopinae,Antilopini,Gazella,spekei,20,50,IM,Open,Dittmann et al (2015 CBP),,25,31,25,,,25,,,https://animaldiversity.org/accounts/Gazella_spekei/
+Gazella_gazella,mountain gazelle,Bovidae,Antilopinae,Antilopini,Gazella,gazella,22.4999,37.65,IM,Open,Dittmann et al (2015 CBP),29.5,30,30,11,,,30,,,https://animaldiversity.org/accounts/Gazella_gazella/
+Gazella_arabica,Arabian gazelle,Bovidae,Antilopinae,Antilopini,Gazella,arabica,,,,,,,20,27,11.5,,,20,,,https://animaldiversity.org/accounts/Gazella_arabica/
+Gazella_saudiya,Saudi gazelle,Bovidae,Antilopinae,Antilopini,Gazella,saudiya,16,,,,Smith et all 2011,,,,,,,16,,,https://animaldiversity.org/accounts/Gazella_saudiya/
+Gazella_dorcas,dorcas gazelle,Bovidae,Antilopinae,Antilopini,Gazella,dorcas,23.0001,25,BR,Open,Mendoza et al (2006),18,23,38,25,,,23.0001,,,https://animaldiversity.org/accounts/Gazella_dorcas/
+Antilope_cervicapra,blackbuck,Bovidae,Antilopinae,Antilopini,Antilope,cervicapra,,79.4,GR,Open,Sacher and Staffeldt (1974),43,56,73,0,,,73,,,https://animaldiversity.org/accounts/Antilope_cervicapra/
+Litocranius_walleri,gerenuk,Bovidae,Antilopinae,Antilopini,Litocranius,walleri,37.9997,0,BR,Open,Mendoza et al (2006),58,50,44,0,,,58,,,https://animaldiversity.org/accounts/Litocranius_walleri/
+Antidorcas_marsupialis,springbok,Bovidae,Antilopinae,Antilopini,Antidorcas,marsupialis,39.0499,30,IM,Open,Mendoza et al (2006),46,38,44,,,,46,,,https://animaldiversity.org/accounts/Antidorcas_marsupialis/
+Procapra_picticaudata,Tibetan gazelle,Bovidae,Antilopinae,Antilopini,Procapra,picticaudata,20,50,IM,Open,Heywood (2010),,16,33,0,,,20,,,https://animaldiversity.org/accounts/Procapra_picticaudata/
+Procapra_przewalskii,Przewalkski's gazelle,Bovidae,Antilopinae,Antilopini,Procapra,przewalskii,,,,,,32,32,26,0,,,32,,,https://animaldiversity.org/accounts/Procapra_przewalskii/
+Procapra_gutturosa,Mongolian gazelle,Bovidae,Antilopinae,Antilopini,Procapra,gutturosa,27.75,50,IM,Open,Mendoza et al (2006),30,39,40,0,,,39,,,https://animaldiversity.org/accounts/Procapra_gutturosa/
+Ourebia_ourebi,oribi,Bovidae,Antilopinae,Neotragini,Ourebia,ourebi,17.25,48.5,IM,Open,Pihlstroem et al (2005),22,17,18,0,,,22,,,https://animaldiversity.org/accounts/Ourebia_ourebi/
+Neotragus_pygmaeus,royal antelope,Bovidae,Antilopinae,Neotragini,Neotragus,pygmaeus,4,5,BR,Closed,Mendoza et al (2006),,3,3.8,,,,4,,,https://animaldiversity.org/accounts/Neotragus_pygmaeus/
+Oreotragus_oreotragus,klipspringer,Bovidae,Antilopinae,Oreotragini,Oreotragus,oreotragus,12.9999,5,BR,Open,Pihlstroem et al (2005),18,12,9,0,,,18,,,https://animaldiversity.org/accounts/Oreotragus_oreotragus/
+Philantomba_monticola,blue duiker,Bovidae,Cephalophinae,Cephalophini,Philantomba,monticola,6.25,1,BR,Closed,Clauss et al (2007 CBP),6,4.6,4.7,3,,,6.25,,,https://animaldiversity.org/accounts/Philantomba_monticola/
+Philantomba_walteri,,Bovidae,Cephalophinae,Cephalophini,Philantomba,walteri,,,,,,,10,5,0,,,10,,,https://animaldiversity.org/accounts/Philantomba_walteri/
+Philantomba_maxwellii,Maxwell's duiker,Bovidae,Cephalophinae,Cephalophini,Philantomba,maxwellii,12,1,BR,Closed,Heywood (2010),7,10,5,0,,,12,,,https://animaldiversity.org/accounts/Philantomba_maxwellii/
+Cephalophus_spadix,Abbott's duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,spadix,56.0003,1,BR,Closed,Mendoza et al (2006),,60,12,0,,,60,,,https://animaldiversity.org/accounts/Cephalophus_spadix/
+Cephalophus_silvicultor,yellow-backed duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,silvicultor,72.5003,1,BR,Mixed,Mendoza et al (2006),80,80,21,0,,,80,,,https://animaldiversity.org/accounts/Cephalophus_silvicultor/
+Cephalophus_jentinki,Jentink's duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,jentinki,70.0003,1,BR,Closed,Bro-Jorgensen (2008),,91,21,14,,,91,,,https://animaldiversity.org/accounts/Cephalophus_jentinki/
+Cephalophus_dorsalis,bay duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,dorsalis,20,0,BR,Closed,Sacher and Staffeldt (1974),,24,8,5,,,24,,,https://animaldiversity.org/accounts/Cephalophus_dorsalis/
+Sylvicapra_grimmia,bush duiker,Bovidae,Cephalophinae,Cephalophini,Sylvicapra,grimmia,19.4998,12,BR,Mixed,Schiviz et al (2008),25,26,18,0,,,26,,,https://animaldiversity.org/accounts/Sylvicapra_grimmia/
+Cephalophus_zebra,zebra duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,zebra,17.5001,1,BR,Closed,Bro-Jorgensen (2008),20,23,5,3,,,23,,,https://animaldiversity.org/accounts/Cephalophus_zebra/
+Cephalophus_adersi,Aders's duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,adersi,9.25,2.5,BR,Closed,Bro-Jorgensen (2008),,12,5,3,,,12,,,https://animaldiversity.org/accounts/Cephalophus_adersi/
+Cephalophus_leucogaster,white-bellied duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,leucogaster,12.6999,0,BR,Closed,Perez-Barberia and Gordon (2001),,21,6.9,2.9,,,21,,,https://animaldiversity.org/accounts/Cephalophus_leucogaster/
+Cephalophus_rufilatus,red-flanked duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,rufilatus,12,1,BR,Closed,Bro-Jorgensen (2008),14,14,9.5,4,,,14,,,https://animaldiversity.org/accounts/Cephalophus_rufilatus/
+Cephalophus_nigrifrons,black-fronted duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,nigrifrons,13.8998,0,BR,Closed,Heywood (2010),,18,9.5,5.2,,,18,,,https://animaldiversity.org/accounts/Cephalophus_nigrifrons/
+Cephalophus_natalensis,Natal duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,natalensis,14.5001,1,BR,Closed,Clauss et al (2007 CBP),,15,8,4.4,,,15,,,https://animaldiversity.org/accounts/Cephalophus_natalensis/
+Cephalophus_harveyi,Harvey's duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,harveyi,,,,,,,14,9,0,,,14,,,https://animaldiversity.org/accounts/Cephalophus_harveyi/
+Cephalophus_ogilbyi,Ogilby's duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,ogilbyi,20,1,BR,Closed,Perez-Barberia and Gordon (2001),,20,12,6,,,20,,,https://animaldiversity.org/accounts/Cephalophus_ogilbyi/
+Cephalophus_weynsi,Weyn's duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,weynsi,,,,,,,20,11,5.5,,,20,,,https://animaldiversity.org/accounts/Cephalophus_weynsi/
+Cephalophus_callipygus,Peter's duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,callipygus,18.2499,2,BR,Closed,Heywood (2010),,24,10,5.8,,,24,,,https://animaldiversity.org/accounts/Cephalophus_callipygus/
+Cephalophus_niger,black duiker,Bovidae,Cephalophinae,Cephalophini,Cephalophus,niger,20.4,1,BR,Mixed,Heywood (2010),20,26,9,3,,,26,,,https://animaldiversity.org/accounts/Cephalophus_niger/
+Pantholops_hodgsonii,chiru,Bovidae,Pantholopinae,Pantholopini,Pantholops,hodgsonii,27.5,50,IM,Open,Mendoza et al (2006),40,40,70,,,,40,,,https://animaldiversity.org/accounts/Pantholops_hodgsonii/
+Ovibos_moschatus,muskox,Bovidae,Caprinae,Ovibovini,Ovibos,moschatus,312.5,50,IM,Open,Nummela (1995),400,410,,,,,410,,,https://animaldiversity.org/accounts/Ovibos_moschatus/
+Naemorhedus_griseus,Chinese goral,Bovidae,Caprinae,Naemorhedini,Naemorhedus,griseus,,,,,,,35,23,18,,,35,,,https://animaldiversity.org/accounts/Naemorhedus_griseus/
+Naemorhedus_goral,goral,Bovidae,Caprinae,Naemorhedini,Naemorhedus,goral,28.5,50,IM,Open,Mendoza et al (2006),30,42,18,,,,42,,,https://animaldiversity.org/accounts/Naemorhedus_goral/
+Naemorhedus_caudatus,Chinese goral,Bovidae,Caprinae,Naemorhedini,Naemorhedus,caudatus,,,,,,32,47,21,,,,47,,,https://animaldiversity.org/accounts/Naemorhedus_caudatus/
+Naemorhedus_baileyi,red goral,Bovidae,Caprinae,Naemorhedini,Naemorhedus,baileyi,,,,,,,30,16,13,,,30,,,https://animaldiversity.org/accounts/Naemorhedus_baileyi/
+Capricornis_swinhoei,Formosan serow/Taiwan serow,Bovidae,Caprinae,Naemorhedini,Capricornis,swinhoei,,,,,,,30,11.2,,,,30,,,https://animaldiversity.org/accounts/Capricornis_swinhoei/
+Capricornis_sumatraensis,serow/Sumatran serow,Bovidae,Caprinae,Naemorhedini,Capricornis,sumatraensis,,,,,,,140,23,,,,140,,,https://animaldiversity.org/accounts/Capricornis_sumatraensis/
+Capricornis_milneedwardsii,Chinese serow,Bovidae,Caprinae,Naemorhedini,Capricornis,milneedwardsii,,,,,,,140,26.7,,,,140,,,https://animaldiversity.org/accounts/Capricornis_milneedwardsii/
+Capricornis_crispus,Japanese serow,Bovidae,Caprinae,Naemorhedini,Capricornis,crispus,38.5,70,IM,Mixed,Schiviz et al (2008),45,48,15,,,,48,,,https://animaldiversity.org/accounts/Capricornis_crispus/
+Oreamnos_americanus,mountain goat,Bovidae,Caprinae,Naemorhedini,Oreamnos,americanus,72.5003,36.5,IM,Open,Mendoza et al (2006),81.8,130,30,,,,130,,,https://animaldiversity.org/accounts/Oreamnos_americanus/
+Rupicapra_rupicapra,chamois,Bovidae,Caprinae,Naemorhedini,Rupicapra,rupicapra,26.1,74,IM,Open,Howland et al (2004),50,62,30,,,,62,,,https://animaldiversity.org/accounts/Rupicapra_rupicapra/
+Rupicapra_pyrenaica,Pyrenean chamois,Bovidae,Caprinae,Naemorhedini,Rupicapra,pyrenaica,,,,,,50,50,28,,,,50,,,https://animaldiversity.org/accounts/Rupicapra_pyrenaica/
+Myotragus_balearicus,,Bovidae,Caprinae,Caprini,Myotragus,balearicus,47.5,,,,"Kohler & Moya - Sola 2004 Reduction of Brain and Sense Organs
+in the Fossil Insular Bovid Myotragus",,,,,,,47.5,,,https://animaldiversity.org/accounts/Myotragus_balearicus/
+Arabitragus_jayakari,,Bovidae,Caprinae,Caprini,Arabitragus,jayakari,,,,,,,45,32,,,,45,,,https://animaldiversity.org/accounts/Arabitragus_jayakari/
+Ammotragus_lervia,aoudad,Bovidae,Caprinae,Caprini,Ammotragus,lervia,48,40,IM,Open,Sacher and Staffeldt (1974),145,145,88,40,,,145,,,https://animaldiversity.org/accounts/Ammotragus_lervia/
+Budorcas_taxicolor,takin,Bovidae,Caprinae,Ovibovini,Budorcas,taxicolor,302,50,IM,Open,Mendoza et al (2006),400,350,64,,,,400,,,https://animaldiversity.org/accounts/Budorcas_taxicolor/
+Pseudois_nayaur,bharal,Bovidae,Caprinae,Caprini,Pseudois,nayaur,45,68,IM,Open,Mendoza et al (2006),75,75,80,20,,,75,,,https://animaldiversity.org/accounts/Pseudois_nayaur/
+Hemitragus_jemlahicus,Himalayan tahr,Bovidae,Caprinae,Caprini,Hemitragus,jemlahicus,35.2,75,GR,Open,Mendoza et al (2006),90,140,45,,,,140,,,https://animaldiversity.org/accounts/Hemitragus_jemlahicus/
+Capra_sibirica,Siberian ibex,Bovidae,Caprinae,Caprini,Capra,sibirica,130,44,IM,Open,Bro-Jorgensen (2008),100,130,148,39,,,130,,,https://animaldiversity.org/accounts/Capra_sibirica/
+Capra_cylindricornis,East Caucasian tur,Bovidae,Caprinae,Caprini,Capra,cylindricornis,,,,,,140,143,90,22,,,143,,,https://animaldiversity.org/accounts/Capra_cylindricornis/
+Capra_caucasica,West Caucasian tur,Bovidae,Caprinae,Caprini,Capra,caucasica,55,44,IM,Open,Bro-Jorgensen (2008),100,80,74,30,,,100,,,https://animaldiversity.org/accounts/Capra_caucasica/
+Capra_falconeri,markhor,Bovidae,Caprinae,Caprini,Capra,falconeri,41,44,IM,Mixed,Heywood (2010),110,102,160,38,,,110,,,https://animaldiversity.org/accounts/Capra_falconeri/
+Capra_hircus,domestic goat,Bovidae,Caprinae,Caprini,Capra,hircus,55,28,IM,Open,Crile and Quiring (1940),113,113,100,33,,,113,,,https://animaldiversity.org/accounts/Capra_hircus/
+Capra_aegagrus,,Bovidae,Caprinae,Caprini,Capra,aegagrus,,,,,,,90,127,33,,,90,,,https://animaldiversity.org/accounts/Capra_aegagrus/
+Capra_walie,Walia ibex,Bovidae,Caprinae,Caprini,Capra,walie,100,44,IM,Open,Bro-Jorgensen (2008),125,125,114,13,,,125,,,https://animaldiversity.org/accounts/Capra_walie/
+Capra_nubiana,Nubian ibex,Bovidae,Caprinae,Caprini,Capra,nubiana,46.25,60,IM,Open,Heywood (2010),70,85,127,35,,,85,,,https://animaldiversity.org/accounts/Capra_nubiana/
+Capra_pyrenaica,Spanish ibex,Bovidae,Caprinae,Caprini,Capra,pyrenaica,50,44,IM,Mixed,Ritz et al (2013),80,120,101,29,,,120,,,https://animaldiversity.org/accounts/Capra_pyrenaica/
+Capra_ibex,ibex,Bovidae,Caprinae,Caprini,Capra,ibex,69.3333,60,IM,Open,Clauss et al (2007 CBP),100,120,100,35,,,120,,,https://animaldiversity.org/accounts/Capra_ibex/
+Ovis_nivicola,snow sheep,Bovidae,Caprinae,Caprini,Ovis,nivicola,90,54.54,IM,Open,Clauss et al (2011 JZool),,120,93,28,,,120,,,https://animaldiversity.org/accounts/Ovis_nivicola/
+Ovis_dalli,Dall's sheep,Bovidae,Caprinae,Caprini,Ovis,dalli,55.6506,56,IM,Open,Pihlstroem et al (2005),113,122,127,20,,,122,,,https://animaldiversity.org/accounts/Ovis_dalli/
+Ovis_canadensis,bighorn sheep,Bovidae,Caprinae,Caprini,Ovis,canadensis,74.6449,63,IM,Open,Scott (1985),127,135,126,33,,,135,,,https://animaldiversity.org/accounts/Ovis_canadensis/
+Ovis_orientalis,,Bovidae,Caprinae,Caprini,Ovis,orientalis,50,,,,Crile and Quiring (1940),200,160,85,,,,200,,,https://animaldiversity.org/accounts/Ovis_orientalis/
+Ovis_aries,mouflon,Bovidae,Caprinae,Caprini,Ovis,aries,50,55.7,IM,Open,Crile and Quiring (1940),200,160,85,,,,200,,,https://animaldiversity.org/accounts/Ovis_aries/
+Ovis_ammon,argali,Bovidae,Caprinae,Caprini,Ovis,ammon,180,35,IM,Open,Scott (1985),185,175,180,56,,,185,,,https://animaldiversity.org/accounts/Ovis_ammon/
+Nilgiritragus_hylocrius,,Bovidae,Caprinae,Caprini,Nilgiritragus,hylocrius,,,,,,,100,44.5,30,,,100,,,https://animaldiversity.org/accounts/Nilgiritragus_hylocrius/
+Hippotragus_niger,sable antelope/mbarapi,Bovidae,Hippotraginae,Hippotragini,Hippotragus,niger,227.4993,85,GR,Mixed,Howland et al (2004),238,250,165,100,,,250,,,https://animaldiversity.org/accounts/Hippotragus_niger/
+Hippotragus_leucophaeus,blue buck,Bovidae,Hippotraginae,Hippotragini,Hippotragus,leucophaeus,150,,,,Smith et all 2011,,,,,,,150,,,https://animaldiversity.org/accounts/Hippotragus_leucophaeus/
+Hippotragus_equinus,roan antelope,Bovidae,Hippotraginae,Hippotragini,Hippotragus,equinus,269.9977,85,GR,Open,Schiviz et al (2008),300,300,100,,,,300,,,https://animaldiversity.org/accounts/Hippotragus_equinus/
+Oryx_dammah,scimitar-horned oryx,Bovidae,Hippotraginae,Hippotragini,Oryx,dammah,200,75,GR,Open,Stoeckman (1975),200,200,150,,,,200,,,https://animaldiversity.org/accounts/Oryx_dammah/
+Oryx_gazella,gemsbok,Bovidae,Hippotraginae,Hippotragini,Oryx,gazella,169.0013,75,GR,Open,Schiviz et al (2008),240,275,150,,,,275,,,https://animaldiversity.org/accounts/Oryx_gazella/
+Oryx_beisa,beisa,Bovidae,Hippotraginae,Hippotragini,Oryx,beisa,176,83,GR,Open,Meier et al (2017),,209,90,,,,209,,,https://animaldiversity.org/accounts/Oryx_beisa/
+Oryx_leucoryx,Arabian oryx,Bovidae,Hippotraginae,Hippotragini,Oryx,leucoryx,87.7,75,GR,Open,Perez-Barberia and Gordon (2001),210,75,68,,,,210,,,https://animaldiversity.org/accounts/Oryx_leucoryx/
+Addax_nasomaculatus,addax,Bovidae,Hippotraginae,Hippotragini,Addax,nasomaculatus,70.0003,80,GR,Open,Clauss et al (2007 CBP),125,125,109,80,,,125,,,https://animaldiversity.org/accounts/Addax_nasomaculatus/
+Connochaetes_taurinus,blue wildebeest,Bovidae,Alcelaphinae,Alcelaphini,Connochaetes,taurinus,179.999,87.5,GR,Open,McNab and Eisenberg (1989),270,295,83,40,,,295,,,https://animaldiversity.org/accounts/Connochaetes_taurinus/
+Connochaetes_gnou,black wildebeest/white-tailed gnu,Bovidae,Alcelaphinae,Alcelaphini,Connochaetes,gnou,179.999,81,GR,Open,Mendoza et al (2006),157,180,78,,,,180,,,https://animaldiversity.org/accounts/Connochaetes_gnou/
+Damaliscus_pygargus,blesbok/bontebok,Bovidae,Alcelaphinae,Alcelaphini,Damaliscus,pygargus,102,100,GR,Open,Pihlstroem et al (2005),80,86,36,33,,,102,,,https://animaldiversity.org/accounts/Damaliscus_pygargus/
+Damaliscus_lunatus,topi/tsessebe,Bovidae,Alcelaphinae,Alcelaphini,Damaliscus,lunatus,136.0003,99.3,GR,Open,Mendoza et al (2006),147,140,40,37,,,147,,,https://animaldiversity.org/accounts/Damaliscus_lunatus/
+Damaliscus_korrigum,topi,Bovidae,Alcelaphinae,Alcelaphini,Damaliscus,korrigum,102,99.3,GR,Open,Clauss et al (2003 Oikos),,136,84,,,,136,,,https://animaldiversity.org/accounts/Damaliscus_korrigum/
+Beatragus_hunteri,hirola/Hunter's hartebeest,Bovidae,Alcelaphinae,Alcelaphini,Beatragus,hunteri,80,90,GR,Open,Mendoza et al (2006),155,118,60,49,,,155,,,https://animaldiversity.org/accounts/Beatragus_hunteri/
+Alcelaphus_buselaphus,hartebeest,Bovidae,Alcelaphinae,Alcelaphini,Alcelaphus,buselaphus,171.0015,97,GR,Open,Crile and Quiring (1940),200,,,,,,200,,,https://animaldiversity.org/accounts/Alcelaphus_buselaphus/
+Pelea_capreolus,common rhebok,Bovidae,Reduncinae,Peleini,Pelea,capreolus,20,7,BR,Open,Mendoza et al (2006),30,30,29,,,,30,,,https://animaldiversity.org/accounts/Pelea_capreolus/
+Redunca_fulvorufula,mountain reedbuck,Bovidae,Reduncinae,Reduncini,Redunca,fulvorufula,29.4999,99,GR,Open,Scott (1985),30,37,22,,,,37,,,https://animaldiversity.org/accounts/Redunca_fulvorufula/
+Redunca_redunca,Bohar reedbuck,Bovidae,Reduncinae,Reduncini,Redunca,redunca,44.0504,95,GR,Open,Crile and Quiring (1940),55,65,25,,,,65,,,https://animaldiversity.org/accounts/Redunca_redunca/
+Redunca_arundinum,southern reedbuck,Bovidae,Reduncinae,Reduncini,Redunca,arundinum,58.0003,95,GR,Mixed,Mendoza et al (2006),80,95,45,,,,95,,,https://animaldiversity.org/accounts/Redunca_arundinum/
+Kobus_vardonii,puku,Bovidae,Reduncinae,Reduncini,Kobus,vardonii,71.5007,93,GR,Open,Mendoza et al (2006),92,91,53,,,,92,,,https://animaldiversity.org/accounts/Kobus_vardonii/
+Kobus_kob,kob,Bovidae,Reduncinae,Reduncini,Kobus,kob,78.5001,95,GR,Open,Mendoza et al (2006),120,60,65,,,,120,,,https://animaldiversity.org/accounts/Kobus_kob/
+Kobus_ellipsiprymnus,waterbuck,Bovidae,Reduncinae,Reduncini,Kobus,ellipsiprymnus,210.0003,84,GR,Open,Scott (1985),300,275,92,,,,300,,,https://animaldiversity.org/accounts/Kobus_ellipsiprymnus/
+Kobus_megaceros,Nile lechwe,Bovidae,Reduncinae,Reduncini,Kobus,megaceros,87.5004,95,GR,Open,Heywood (2010),120,120,87,,,,120,,,https://animaldiversity.org/accounts/Kobus_megaceros/
+Kobus_leche,lechwe,Bovidae,Reduncinae,Reduncini,Kobus,leche,110.749,95,GR,Open,Schiviz et al (2008),128,135,66,,,,135,,,https://animaldiversity.org/accounts/Kobus_leche/
+Aepyceros_melampus,impala,Bovidae,Aepycerotinae,Aepycerotini,Aepyceros,melampus,52.5001,60,IM,Mixed,Crile and Quiring (1940),60,80,92,,,,80,,,https://animaldiversity.org/accounts/Aepyceros_melampus/
+Neotragus_moschatus,suni,Bovidae,Neotraginae,Neotragini,Nesotragus,moschatus,6.4999,6,BR,Mixed,Mendoza et al (2006),6,4.5,13.3,,,,6.4999,,,https://animaldiversity.org/accounts/Neotragus_moschatus/
+Neotragus_batesi,dwarf antelope,Bovidae,Neotraginae,Neotragini,Neotragus,batesi,3,5,BR,Closed,Fraser and Theodor (2011),3,3,5.5,,,,3,,,https://animaldiversity.org/accounts/Neotragus_batesi/
+Axis_calamianensis,Calamian deer,Cervidae,Cervinae,Cervini,Axis,calamianensis,40.5,,,,Smith et all 2011,,,,,,,40.5,,,https://animaldiversity.org/accounts/Axis_calamianensis/
+Rusa_marianna,Philippine deer,Cervidae,Cervinae,Cervini,Rusa,marianna,126.4711,,,,avg of rusa,,,,,,,126.4711,,,https://animaldiversity.org/accounts/Rusa_marianna/
