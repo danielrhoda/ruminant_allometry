@@ -6,4 +6,7 @@ This is the code associated with a manuscript in preparation on craniofacial evo
 
 'processing_data' - code to clean and wrangle the raw landmark data into formats suitable for anlaysis
 
-'figures_results' - all the code to replicate the figures and results of this project
+'analysis_figures' - all the code needed to replicate the analyses and figures presented in this manuscript
+
+
+'figures_results' - older version of 'analysis_figures'
