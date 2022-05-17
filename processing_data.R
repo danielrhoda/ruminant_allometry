@@ -2,7 +2,7 @@
 
 set.seed(6202021)
 
-setwd("C:/Users/drhod/Desktop/ruminant_allometry")
+#setwd("C:/Users/drhod/Desktop/ruminant_allometry")
 
 
 family.colors <- c("#0080BD","#904010","#00BBE3","#BB662A","#005EA0","#60290C") # blue -> dark brown, with even darker tagged onto the back
@@ -137,21 +137,6 @@ tree.20 <- keep.tip(R.tree, tip = names(specs20))
 specs20 <- specs20[match(tree.20$tip.label, haber.names[haber.names %in% names(specs20)])]
 
 
-specs50 <- c()
-for(i in 1:length(specs.FV)){
-  if(length(which(si.FV == specs.FV[[i]])) > 49){specs50[[i]] <- specs.FV[[i]]}
-specs50 <- specs50[lengths(specs50) != 0]
-}
-specs50 <- unlist(specs50)
-
-for(i in 1:length(specs50)){
-  names(specs50)[i] <- name.id[which(name.id[,1]==specs50[i]),3]
-}
-# just to confirm that everything is in the correct order :-)
-
-# the tree with only species represented by at least 50 specimens
-tree.50 <- keep.tip(R.tree, tip = names(specs50))
-specs50 <- specs50[match(tree.50$tip.label, haber.names[haber.names %in% names(specs50)])]
 
 # making a list of superimpositions of each of the species with >20 specimens
 proc.list.20 <- c()
