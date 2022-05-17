@@ -1,6 +1,6 @@
 # ruminant_allometry
 
-This is the code associated with a manuscript in preparation on craniofacial evolutionary allometry in Ruminantia, asking how constraints on variation at the species level scales to explain macroevolutionary patterns.
+This is the code associated with a manuscript [eventual link] on craniofacial evolutionary allometry in Ruminantia, asking how constraints on variation at the species level scales to explain macroevolutionary patterns.
 
 'ruminant_functions' - the custom scripts needed to run analyses and plot data
 
