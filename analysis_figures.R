@@ -1,4 +1,4 @@
-#
+#load("ruminant_data.Rdata")
 
 # evolutionary allometry analysis:
 ##############
