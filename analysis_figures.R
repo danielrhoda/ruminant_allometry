@@ -2,18 +2,20 @@
 
 # evolutionary allometry analysis:
 ##############
-R.size.pgls <- procD.pgls(f1 = coords~csize, phy = tree, data = R.df)
-summary(R.size.pgls)
+R.size.pgls <- procD.pgls(f1 = coords~csize, phy = tree, data = R.df) # PGLS of shape~size, interspecific allometry
+summary(R.size.pgls) # anova table
 
+# plot of the multivariate regression of shape and size
 R.size.pgls.plot <- plot(R.size.pgls, type = "regression", predictor = R.size,reg.type ="RegScore",
                          bg = pts.col, pch = pts.pch, cex = rescale.numeric(R.size, to = c(0.5,2.25)),lwd = 3,
                          main = "Evolutionary Allometry (PGLS)", xlab = "log-transformed centroid size", ylab = "cranial shape")
 
+# computing the shapes at the extremes ofthe multivariate regression 
 R.size.pgls.preds <- shape.predictor(R.size.pgls$GM$pgls.fitted, x= R.size.pgls.plot$RegScore, Intercept = FALSE,
                         predmin = min(R.size.pgls.plot$RegScore),
                         predmax = max(R.size.pgls.plot$RegScore))
 
-
+# PGLS of shape~size with subfamilies considered
 R.size.subfam <- procD.pgls(f1 = coords ~ csize*subfamily, phy = tree, data=R.df)
 anova(R.size.subfam)
 # different evolutionary allometric slopes per tribe
@@ -21,9 +23,9 @@ anova(R.size.subfam)
 # does the interaction affect the fit of the full model?
 R.size.subfam2 <- procD.pgls(f1 = coords ~ csize+subfamily, phy = tree, data=R.df)
 anova(R.size.subfam2)
-
 anova(R.size.subfam2,R.size.subfam)
 # ya
+
 ##############
 
 # interspecific morphospace
@@ -33,6 +35,7 @@ as.proc <- gpagen(ruminants)
 allspecs <- as.proc$coords
 allspecs.size <- as.proc$Csize
 
+# projecting the individual specimens into the morphospace (principal components analysis is performed in the 'processing_data.R' file
 allspecs.scores <- matrix(nrow=dim(allspecs)[3],ncol=dim(R.pca$rotation)[2])
 for(i in 1:dim(allspecs)[3]){
   x <- rotonto(mshape(R),allspecs[,,i],scale=F)$yrot - mshape(R)
@@ -41,6 +44,7 @@ for(i in 1:dim(allspecs)[3]){
   allspecs.scores[i,] <- a.preds[1,] %*% R.pca$rotation
 }
 
+# an incredibly tedious way to assign each specimen a color associated with its family, and then computing convex hulls per family below
 family.cols <- c()
 family.pch <- c()
  for(i in 1:NROW(allspecs.scores)){
@@ -67,17 +71,15 @@ family.pch <- c()
  tragulid.chull <- c(tragulid.chull,tragulid.chull[1])
 
 
-# R.bm <- mvBM(R.df$tree, data= R.pca$x[,1:2])
 
- R.d <- distRoot(R.df$tree)[1]
+# R.bm <- mvBM(R.df$tree, data= R.pca$x[,1:2]) # fitting the PC data to a BM model of evolution
+ R.d <- distRoot(R.df$tree)[1] # computing the root to tip distance
 
 
 
 # Interspecific morphospace - PC1 & 2
-
-# with densities
+# run lines 81-157 for the full figure 1a, with the densities
 par(fig=c(0,.9,0,.9),mar=c(4,4,1,1))
-# ADD ALLOMETRY VECTOR
    plot(NA,xlim=c(-0.2,0.2),ylim=c(-.2,.21),asp=1,cex.lab=1.2,
        xlab = paste("PC1: ",toString(round(R.pca$d[1]/sum(R.pca$d),digits=3)*100),"% of shape variation",sep=""),
        ylab = paste("PC2: ",toString(round(R.pca$d[2]/sum(R.pca$d),digits=3)*100),"% of shape variation",sep=""))
@@ -157,6 +159,7 @@ polygon(dens,col = addTrans(family.colors[i],255*0.1), border = family.colors[i]
 par(mfrow = c(1,1), mar = c(5,5,2,2))
 # THE PHYLOGENETIC DISTRIBUTION SCHEMATIC
 ###
+# using the evolutionary rate matrix to produce a probabilty distribution in morphospace
 library(mvtnorm)
 x.points <- seq(-0.5,0.5,length.out=100)
 y.points <- x.points
@@ -189,7 +192,7 @@ shape::colorlegend(col= colorRampPalette(c("gray10","gray85"))(50), zlim=c(0,max
 # SHAPE VARIATION ALONG THE MORPHOSPACE
 ####
 density.2d <- kde2d.weighted(allspecs.scores[,1], allspecs.scores[,2], w = wts,
-                             lims = c(range(allspecs.scores[,1]),range(allspecs.scores[,2])))
+                             lims = c(range(allspecs.scores[,1]),range(allspecs.scores[,2]))) # i don't do anything with this..
 
 par(mar=c(5,5,2,2))
   plot(NA,xlim=c(-0.2,0.2),ylim=c(-.2,.21),asp=T,cex.lab=1.2,
@@ -209,7 +212,6 @@ points(scores, pch = 16, lwd = 2, cex = 1)
 
 
 shapes <- matrix(NA, ncol = dim(R)[1]*dim(R)[2], nrow = nrow(scores))
-PC <- bovid.pca$x[,1:2]
 for(i in 1:nrow(shapes)){
   shapes[i,] <- c(t(mshape(R)))+R.pca$rotation[,1]*scores[i,1]+R.pca$rotation[,2]*scores[i,2]
 }
@@ -258,6 +260,7 @@ points(R.pca$x[,1:2],cex = rescale.numeric(R.size,c(0.75,2.25)))
 points(R.pca$x[R2.df.n,1:2],cex = rescale.numeric(R.size,c(0.75,2.25))[R2.df.n],
        col = make.color.vec(100-R2.df$percentgrass,11,brewer_pal(palette = "BrBG")), pch = 19)
 
+# interpolating a surface based on the empirical %grass values and PC scores
 pgrass.surf <- surf.ls(2,R.pca$x[R2.df.n,1],R.pca$x[R2.df.n,2],100-R2.df$percentgrass)
 pgrass.trmat <- trmat(pgrass.surf,-.3,.3,-.3,.3,n = 24)
 anova(pgrass.surf)
@@ -558,6 +561,8 @@ bovid.size <- log(apply(bovid.spec,3,cSize))
 
 cervid.spec.n2 <- name.id[name.id[,3] %in% names(fam)[fam=="Cervidae"],1] ; names(cervid.spec.n2) <- name.id[name.id[,3] %in% names(fam)[fam=="Cervidae"],3]
 bovid.spec.n2 <- name.id[name.id[,3] %in% names(fam)[fam=="Bovidae"],1] ; names(bovid.spec.n2) <- name.id[name.id[,3] %in% names(fam)[fam=="Bovidae"],3]
+
+
 # loop that calculates specimen PC scores for each specimen (i) for each species (j)
 
 ALSPSIZE <- rescale.numeric(log(allspecs.size),c(0.5,2.5))
