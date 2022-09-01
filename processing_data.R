@@ -4,16 +4,16 @@ set.seed(6202021)
 
 #setwd("C:/Users/drhod/Desktop/ruminant_allometry")
 
-
 family.colors <- c("#0080BD","#904010","#00BBE3","#BB662A","#005EA0","#60290C") # blue -> dark brown, with even darker tagged onto the back
-col.pal <-  colorRampPalette(Blue2DarkRed18Steps)
+names(family.colors) <- c("Cervidae", "Bovidae", "Tragulidae", "Moschidae", "DarkBlue", "DarkBrown")
 col.pal.sunset <- colorRampPalette(GetColors(256, scheme = "sunset"))
-
+CBP  <- c("#000000", "#E69F00", "#56B4E9", "#009E73",
+                       "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "Gray30", "Gray70")
 
 # reading in metadata from Haber 2016
-load("C:/Users/drhod/Desktop/ruminant_allometry/data/SpecimenInfo.Rdata")
-load("C:/Users/drhod/Desktop/ruminant_allometry/data/comptreesL.Rdata")
-load("C:/Users/drhod/Desktop/ruminant_allometry/data/ildefL.Rdata")
+load("data/SpecimenInfo.Rdata")
+load("data/comptreesL.Rdata")
+load("data/ildefL.Rdata")
 full.inventory1 <- read.csv(file = "data/full_inventory.csv",row.names = 1)
 
 # reading in landmark data from Haber 2016
@@ -57,9 +57,9 @@ haber.tree2 <- add.tips(tree = haber.tree, tips = c("Odo_he_sp","Odo_vi_sp","Sai
 haber.tree3 <- drop.tip(phy = haber.tree2, tip = haber.tree2$tip.label[28:33])
 haber.tree <- haber.tree3
 names(haber.tree$tip.label)[210] <- "Odocoileus hemionus"
-names(haber.tree$tip.label)[211] <-"Odocoileus virginianus"
-names(haber.tree$tip.label)[212] <-"Saiga tatarica"
-names(haber.tree$tip.label)[213] <-"Megaloceros giganteus"
+names(haber.tree$tip.label)[211] <- "Odocoileus virginianus"
+names(haber.tree$tip.label)[212] <- "Saiga tatarica"
+names(haber.tree$tip.label)[213] <- "Megaloceros giganteus"
 
 
 # making a key between the species' shorthand from Haber 2016 and the scientific names
@@ -107,8 +107,6 @@ R.tree <- keep.tip(phy = upham.tree2, tip = haber.names)
 
 # making sure things are in the correct order for my own sanity
 specs.FV <- specs.FV[match(R.tree$tip.label, haber.names)]
-haber.names <- names(specs.FV)
-
 
 
 w <- table(si.FV)
@@ -125,6 +123,7 @@ specs20 <- specs20[lengths(specs20) != 0]
 }
 specs20 <- unlist(specs20)
 specs20 <- specs20[-which(specs20 == "Cep_ni7")]
+# there's an ontogenetic signal in Cep_ni7, it's not just conspecific adults
 
 
 for(i in 1:length(specs20)){
@@ -134,27 +133,20 @@ for(i in 1:length(specs20)){
 
 # the tree with only species represented by at least 20 specimens
 tree.20 <- keep.tip(R.tree, tip = names(specs20))
-specs20 <- specs20[match(tree.20$tip.label, haber.names[haber.names %in% names(specs20)])]
+specs20 <- specs20[match(tree.20$tip.label, names(specs20))]
 
 
 
-# making a list of superimpositions of each of the species with >20 specimens
+# making a list of superimpositions of each of the species with >27 specimens
 proc.list.20 <- c()
 proc.list.20.ID <- c()
+Ps.20 <- array(NA, dim = c(75,75,length(specs20)))
 for(i in 1:length(specs20)){
 proc.list.20[[i]] <- gpagen(A = ruminants[1:25,,which(si.FV == specs20[[i]])],print.progress = FALSE, verbose = T)
+Ps.20[,,i] <- var(two.d.array(proc.list.20[[i]]$coords))
 proc.list.20.ID[[i]] <- si.FV.ID[which(si.FV == specs20[[i]])]
 }
-#names(proc.list.20) <- names(specs20)
-
-# 50
-proc.list.50 <- c()
-proc.list.50.ID <- c()
-for(i in 1:length(specs50)){
-proc.list.50[[i]] <- gpagen(A = ruminants[1:25,,which(si.FV == specs50[[i]])],print.progress = FALSE)
-proc.list.50.ID[[i]] <- si.FV.ID[which(si.FV == specs50[[i]])]
-}
-
+names(proc.list.20) <- names(specs20)
 
 
 # list of superimpositions of all species, regardless of whether they have over 20 specimens
@@ -162,7 +154,9 @@ proc.list.all <- c()
 proc.list.ID.all <- c()
 for(i in 1:length(specs.FV)){
 # if there's only one specimen representing the species, just superimpose itself by duplicating it, so that all the objects in 'proc.list.all' are gpagen objects
-if(length(which(si.FV==specs.FV[i]))==1){proc.list.all[[i]] <- gpagen(A = ruminants[1:25,,c(which(si.FV == specs.FV[i]),which(si.FV == specs.FV[i]))],print.progress = FALSE)}else{
+if(length(which(si.FV==specs.FV[i]))==1){
+  proc.list.all[[i]] <- gpagen(A = ruminants[1:25,,c(which(si.FV == specs.FV[i]),which(si.FV == specs.FV[i]))],print.progress = FALSE)
+  }else{
 proc.list.all[[i]] <- gpagen(A = ruminants[1:25,,which(si.FV == specs.FV[i])],print.progress = FALSE)}
 proc.list.ID.all[[i]] <- si.FV.ID[which(si.FV == specs.FV[[i]])]
   }
@@ -205,7 +199,10 @@ R.size <- log(R.size)
 R.size["Saiga_tatarica"] <- log(mBM["Saiga_tatarica"])*skull.size.body.mass.reg$coefficients[2] + skull.size.body.mass.reg$coefficients[1]
 R.size["Megaloceros_giganteus"] <- log(mBM["Megaloceros_giganteus"])*skull.size.body.mass.reg$coefficients[2] + skull.size.body.mass.reg$coefficients[1]
 
+
+# principal components analysis of mean shape for each species
 R.pca <- gm.prcomp(A=R,phy=R.tree)
+
 
 ###
 # plotTree(R.tree,node.numbers=TRUE,fsize=0.6)
@@ -216,17 +213,6 @@ cervid.ancestor <- ancestors[,,1]
 bovid.ancestor <- ancestors[,,2]
 common.ancestor <- ancestors[,,3]
 # shapes of the ancestors of Bovidae, Cervidae, and Ruminantia
-
-
-# defining modules in the landmark dataset ... that i don't use
-b <- 1
-n <- 2
-oral <- 3
-orbit <- 4
-v <- 5
-z <- 6
-mods <- c(v, v, v, n, oral, b, b, n, oral, oral, oral, z, z, v, v, orbit, orbit, orbit, n, n, n, n, b, b, z)
-face<-c(which(mods == 2),which(mods == 3))
 
 
 
@@ -303,6 +289,12 @@ R.df <- geomorph.data.frame(coords = R[,,R.df.n],
  M <- mshape(R.df$coords)
 # just the taxonomy
 ruminant.taxonomy <- as.data.frame(R.df[c("family", "subfamily", "tribe")]); rownames(ruminant.taxonomy) <- R.df.n
+rt <- apply(ruminant.taxonomy,2,as.character)
+rownames(rt) <- rownames(ruminant.taxonomy)
+ruminant.taxonomy2 <- ruminant.taxonomy[names(specs20),]
+rt2 <- ruminant.taxonomy2
+
+
 
 #R.test <- procD.pgls(f1 = coords~csize, phy = tree, data = R.df); summary(R.test)
 #R.test2 <- procD.lm(f1 = coords~csize*tribe, data = R.df); summary(R.test2)
@@ -317,27 +309,25 @@ R2.tree <- ladderize(keep.tip(R.tree, tip = all.data.names))
 R2.df.n <- R2.tree$tip.label
 
 # horn length residuals
-
-hl.log <- log(full.inventory1[R2.df.n,"HL_male_cm"])
-names(hl.log) <- R2.df.n
-size.hl <- lm(hl.log~R.size[R2.df.n])
-#plot(R.size[R2.df.n],log(full.inventory1[R2.df.n,"HL_male_cm"]), xlab = "skull size", ylab = "horn length") ; abline(size.hl)
-
-hl.resids <- size.hl$residuals
-names(hl.resids) <- R2.df.n
-
+# hl.log <- log(full.inventory1[R2.df.n,"HL_male_cm"])
+# names(hl.log) <- R2.df.n
+# size.hl <- lm(hl.log~R.size[R2.df.n])
+# #plot(R.size[R2.df.n],log(full.inventory1[R2.df.n,"HL_male_cm"]), xlab = "skull size", ylab = "horn length") ; abline(size.hl)
+#
+# hl.resids <- size.hl$residuals
+# names(hl.resids) <- R2.df.n
 
 R2.df <- geomorph.data.frame(coords = R[,,R2.df.n],
                             csize = R.size[R2.df.n],
                             maxBM = log(full.inventory1[R2.df.n,"max_BM"]),
                             percentgrass = full.inventory1[R2.df.n,"percent_grass"],
-                            hlresids = hl.resids[R2.df.n],
+                           # hlresids = hl.resids[R2.df.n],
                             family = as.factor(full.inventory1[R2.df.n,"family"]),
                             subfamily = as.factor(full.inventory1[R2.df.n,"subfamily"]),
                             tribe = as.factor(full.inventory1[R2.df.n,"tribe"]),
                             tree = R2.tree)
 
-R2.test <- procD.pgls(f1 = coords~csize*hlresids, phy = tree, data = R2.df); anova(R2.test) # relative horn length has a small but significant effect on cranial morphology
+#R2.test <- procD.pgls(f1 = coords~csize*hlresids, phy = tree, data = R2.df); anova(R2.test) # relative horn length has a small but significant effect on cranial morphology
 
 # full tree with body mass data
 size.full <- full.inventory1[intersect(upham.tree.full$tip.label,rownames(full.inventory1)),"max_BM"] ; names(size.full) <- upham.tree.full$tip.label ; size.full <- log(size.full)
@@ -346,10 +336,15 @@ size.full <- full.inventory1[intersect(upham.tree.full$tip.label,rownames(full.i
 
 
 # first, interspecific allometry... to measure intraspecific PC1s against
+# PGLS - axis of evolutionary allometry of cranial shape in ruminants
 R.size.pgls <- procD.pgls(f1 = coords~csize, phy = tree, data = R.df)
 summary(R.size.pgls)
 
-# PGLS - axis of evolutionary allometry of cranial shape in ruminants
+R.size.ls <- procD.lm(f1 = coords~csize, data = R.df)
+summary(R.size.ls)
+
+
+
 pts.col <- c()
 pts.pch <- c()
 for(i in 1:dim(R)[3]){
@@ -366,82 +361,317 @@ pts.pch <- unlist(pts.pch) ; names(pts.pch) <- dimnames(R)[[3]]
 
 
 # INTRASPECIFIC METRICS
-evd <- c() # integration 1, eigenvalue dispersion (deviation of the expected relative SD of eigenvalues)
-dis <- c() # disparity 1, Procrustes variance
-for(i in 1:length(proc.list.20)){
-  A <- proc.list.20[[i]]$coords
-  dimnames(A)[[3]] <- 1:length(dimnames(A)[[3]])
-  M <- mshape(A)
-  rot <- gm.prcomp(A)$rotation[,1]
-  dis[[i]]<-morphol.disparity(A~1,print.progress = FALSE)
-  evd[[i]] <- eigen.var(A, sd = TRUE, rel = TRUE, sample = dim(A)[3])
-  }
-dis <- unlist(dis)
-names(dis) <- names(specs20)
-evd <- unlist(evd)
-names(evd) <- names(specs20)
-
-# disparity 2, range of phenotypes (partial procrustes distance between most dissimilar conspecific individuals)
-dmats <- c()
-  All <- gpagen(ruminants)$coords
-for(i in 1:length(specs20)){
-  N <- which(si.FV == specs20[[i]])
-  dmat <- distance.matrix(All[,,N])
-    dmats[[i]] <- list(procD = dmat, N = NROW(dmat), maxD = max(dmat))
-    names(dmats)[[i]] <- name.id[which(name.id[,1] == specs20[i]),3]
-  }
-maxD <- unlist(lapply(dmats, FUN = function(X)X$maxD))
+# eigenvalue dispersion, relative standard deviation of eigenvalues
+rSDE <- lapply(proc.list.20, function(x){
+  A <- x$coords
+  eigen.var(A, sd = TRUE, rel = TRUE, sample = dim(A)[3])
+}) %>% unlist
 
 
-# integration 2, effective eigenvalue dispersion
-rdi.R <- numeric(0)
-for(i in 1:length(proc.list.20)){
-    A <- proc.list.20[[i]]$coords
-    dimnames(A)[[3]] <- 1:dim(A)[3]
-    rdi.R[i] <- rdi(A, replace = TRUE, nsim = 99, nreps = Nmin)$EffectiveDispersion
-    }
-names(rdi.R) <- tree.20$tip.label
+# effect size of Vrel, Connaway & Adams 2022
+Vrel <- lapply(proc.list.20, function(x){
+  integration.Vrel(x$coords)$ZR
+}) %>% unlist
 
-#rdi.R.CM <- contMap(tree = ladderize(tree.20), x = rdi.R, plot = F)
-#rdi.R.CM$cols[1:1000] <- viridis::inferno(1000)# viridis::inferno(1000)
-#plot(rdi.R.CM)
-
-
+# allometry trajectory
 allo.vector <- R.size.pgls$pgls.coefficients[2,]
 
-PC1 <- R.pca$rotation[,1]
-PC2 <- R.pca$rotation[,2]
-R.Ppca <- gm.prcomp(A=R.df$coords,phy=R.df$tree, GLS = T, transform = T)
-pPC1 <- R.Ppca$rotation[,1] ; pPC2 <- R.Ppca$rotation[,2]
-R.paca <- gm.prcomp(A=R.df$coords,phy=R.df$tree, align.to.phy = T)
-
-
-Vproj <- numeric(length(proc.list.20))
-P1 <- numeric(length(Vproj))
-P2 <- numeric(length(Vproj))
+# projected variance of CREA
 Mr <- mshape(R.df$coords)
-for(i in 1:length(proc.list.20)){
-  # Ar <- proc.list.20[[i]]$coords ; dimnames(Ar)[[3]] <- proc.list.20.ID[[i]]
-  # A1 <- matchLM(Ar, Mr)
-  A1 <- proc.list.20[[i]]$coords
-  for(j in 1:dim(A1)[3]){
-    A1[,,j] <- rotonto(x = Mr, y = A1[,,j])$yrot
+Vproj <- lapply(proc.list.20, function(x){
+  A <- x$coords
+  for(i in 1:dim(A)[3]){
+    A[,,i] <- rotonto(x = Mr, y = A[,,i])$yrot}
+  vcv <- var(two.d.array(A))
+  projected.variance(vcv,allo.vector)
+}) %>% unlist
+
+
+# calculating family-specific allometric trajectories:
+fams <- c("Bovidae", "Cervidae")
+allo.fams <- matrix(nrow=length(fams), ncol = length(allo.vector))
+Vproj.specific <- numeric(length(Vproj))
+for(i in 1:nrow(allo.fams)){
+  NAMES <- R.df.n[which(R.df$family == fams[i])]
+  PHYfoo <- keep.tip(R.df$tree, tip = NAMES)
+  COORDS <- R.df$coords[,,NAMES] ; SIZE <- R.df$csize[NAMES]
+  pglsF <- procD.pgls(f1 = COORDS~SIZE, phy = PHYfoo)
+  VEC <- pglsF$pgls.coefficients[2,]
+  PART <- which(ruminant.taxonomy2[,1] == fams[i])
+  for(j in PART){
+      A1 <- proc.list.20[[j]]$coords
+      for(k in 1:dim(A1)[3]){
+        A1[,,k] <- rotonto(x = Mr, y = A1[,,k])$yrot
+      }
+      vcv <- var(two.d.array(A=A1))
+      Vproj.specific[j] <- projected.variance(vcv,VEC)
   }
-  vcv <- var(two.d.array(A=A1))
-  Vproj[i] <- projected.variance(vcv,allo.vector)
-#  P1[i] <- projected.variance(vcv, PC1)
-#  P2[i] <- projected.variance(vcv, PC2)
 }
-names(Vproj)<-tree.20$tip.label
+names(Vproj.specific) <- names(Vproj)
 
 
 
+# which nodes are the ancestors to certain taxonomic groups
+pts <- R.pca$x
+anc <- R.pca$anc.x
+ind <- match(R.tree$tip.label, rownames(pts))
+ind.N <- rownames(pts)
+pts <- pts[ind, ]
+z <- rbind(pts,anc)
+edges <- as.matrix(R.tree$edge)
+
+fam.MRCA <- c(132,137,170,172)
+names(fam.MRCA) <- unique(rt[,1])
+
+subfam.MRCA <- c(Tragulinae = 132,Cervinae = 138,
+                 Capreolinae = 150,Hydropotinae = 166,
+                 Moschinae = 170,Neotraginae = 175,
+                 Aepycerotinae = 174, Reduncinae = 177,
+                 Antilopinae = 185, Cephalophinae = 211,
+                 Pantholopinae = 224, Caprinae = 225,
+                 Alcelaphinae = 242, Hippotraginae = 245, Bovinae = 249)
+
+# calculating the divergence magnitudes
+subfam.divergence <- numeric(length(nrow(pts)))
+for(i in 1:nrow(pts)){
+  NM <- rownames(pts)[i]
+  sf <- rt[NM,2]
+  N <- which(edges[,2] == i)
+  subfam.divergence[i] <- euc.dist(z[edges[N,2],], z[subfam.MRCA[sf],])
+}
+names(subfam.divergence) <- rownames(pts)
+
+
+# While accounting for clade age
+
+# subfam.divergence2 <- numeric(length(nrow(pts)))
+# for(i in 1:nrow(pts)){
+#   NM <- rownames(pts)[i]
+#   sf <- rt[NM,2]
+#   N <- which(edges[,2] == i)
+#   R.d <- distRoot(R.df$tree)[1]
+#   age1 <- distNodes(R.df$tree, node = c(131, subfam.MRCA[sf]))[1,2]
+#   age <- R.d - age1
+#   subfam.divergence2[i] <- euc.dist(z[edges[N,2],], z[subfam.MRCA[sf],]) / age
+# }
+# names(subfam.divergence2) <- rownames(pts)
+
+
+# the angle between the direction of divergence and CREA (the allometric trajectory)
+div.traj <- matrix(NA,nrow=nrow(R.pca$x),ncol=length(allo.vector))
+rownames(div.traj) <- rownames(R.pca$x)
+for(i in 1:nrow(div.traj)){
+  NM <- rownames(pts)[i]
+  sf <- rt[NM,2]
+  desc.shape <- flatten(R.df$coords[,,NM])
+  anc.shape <- R.pca$ancestors[as.factor(subfam.MRCA[sf]),]
+  div.traj[i,] <-  desc.shape - anc.shape
+}
+div.crea.angle.sf <- apply(div.traj,1,FUN=function(x)vector.angle(x,allo.vector))
+
+
+Vproj.div <- numeric(length(specs20))
+names(Vproj.div) <- names(specs20)
+for(i in 1:length(specs20)){
+  A <- proc.list.20[[i]]$coords
+  vcv <- var(two.d.array(A))
+  Vproj.div[i] <- projected.variance(vcv,div.traj[names(specs20)[i],])
+}
 
 
 
+## Computing Projected Variance distributions within Ruminantia, Bovidae, and Cervidae:
+#
+R.Ppca <- gm.prcomp(R.df$coords, phy = R.df$tree, GLS= TRUE, transform = TRUE)
+R.paca <- gm.prcomp(R.df$coords, phy = R.df$tree, align.to.phy = TRUE)
+
+# all ruminants
+##########
+
+PC1 <- R.pca$rotation[,1] ; PC2 <- R.pca$rotation[,2]
+pPC1 <- R.Ppca$rotation[,1] ; pPC2 <- R.Ppca$rotation[,2]
+PaC1 <- R.paca$rotation[,1] ; PaC2 <- R.paca$rotation[,2]
+
+nsim <- 499
+Nmin <- 27 # minimum of 27 specimens
+# originally I bootstrapped this, but now for each species I'm just taking the average of 499 random skewers through P
+Vproj.random1 <- c()
+for(i in 1:nsim){
+  x <- numeric(length(proc.list.20))
+    for(j in 1:length(x)){
+      l <- dim(proc.list.20[[j]]$coords)[3]
+        vcv <- var(two.d.array(A=proc.list.20[[j]]$coords))#[,,sample(1:l, Nmin)]))
+        random.Z <- scalar1(sample(seq(-1,1,length.out=200),size=75))
+        x[j] <- projected.variance(vcv,random.Z)
+    }
+  Vproj.random1[[i]] <- x
+}
+
+Vproj.random1 <- Vproj.random1 %>% do.call(rbind, .)
+Vproj.random <- apply(Vproj.random1,2,mean)
 
 
-R.bm <- mvBM(tree = R.df$tree, data = R.pca$x[,1:2], model = "BM1")
+
+  Vproj.1 <- setNames(numeric(length(proc.list.20)), nm = names(specs20))
+  PC1D <- Vproj.1
+  PC2D <- Vproj.1
+  pPC1D <- Vproj.1
+  pPC2D <- Vproj.1
+  PAC1D <- Vproj.1
+  PAC2D <- Vproj.1
+
+    for(j in 1:length(proc.list.20)){
+      A2d <- two.d.array(A=proc.list.20[[j]]$coords)
+      vcv <- var(A2d)
+      Vproj.1[j] <- projected.variance(vcv,allo.vector, scale=T)
+      pPC1D[j] <- projected.variance(vcv,pPC1, scale=T)
+      pPC2D[j] <- projected.variance(vcv,pPC2, scale=T)
+      PAC1D[j] <- projected.variance(vcv,PaC1, scale=T)
+      PAC2D[j] <- projected.variance(vcv,PaC2, scale=T)
+      PC1D[j] <- projected.variance(vcv,PC1, scale=T)
+      PC2D[j] <- projected.variance(vcv,PC2, scale=T)
+  }
+
+
+vproj.df <- data.frame(Random = Vproj.random, CREA = Vproj, Divergence = Vproj.div, PC1 = PC1D, PC2 = PC2D,
+                       pPC1 = pPC1D, pPC2 = pPC2D, PAC1 = PAC1D, PAC2 = PAC2D)
+
+
+##########
+
+
+Ps <- array(NA,dim=c(75,75,length(specs20)))
+for(i in 1:length(specs20)){
+  Ps[,,i] <- var(two.d.array(A=proc.list.20[[i]]$coords))
+}
+dimnames(Ps)[[3]] <- names(specs20)
+
+
+
+# Cervidae
+##########
+
+cervid.pPCA <- gm.prcomp(A=cervid.lm,phy=cervid.tree,
+                         GLS=T,transform = T)
+cervid.PACA <- gm.prcomp(A=cervid.lm,phy=cervid.tree,align.to.phy = T)
+
+PC1 <- cervid.pca$rotation[,1] ; PC2 <- cervid.pca$rotation[,2]
+pPC1 <- cervid.pPCA$rotation[,1] ; pPC2 <- cervid.pPCA$rotation[,2]
+PaC1 <- cervid.PACA$rotation[,1] ; PaC2 <- cervid.PACA$rotation[,2]
+
+Ps.cervidae <- Ps[,,which(rt2[,1]=="Cervidae")]
+
+nsim <- 499
+Nmin <- 27 # minimum of 27 specimens
+Vproj.random1 <- c()
+Cervid.L <- dim(Ps.cervidae)[3]
+for(i in 1:nsim){
+  x <- numeric(Cervid.L)
+    for(j in 1:dim(Ps.cervidae)[3]){
+      l <- dim(proc.list.20[[j]]$coords)[3]
+        vcv <- Ps.cervidae[,,j]
+        random.Z <- scalar1(sample(seq(-1,1,length.out=200),size=75))
+        x[j] <- projected.variance(vcv,random.Z)
+    }
+  Vproj.random1[[i]] <- x
+}
+
+Vproj.random1 <- Vproj.random1 %>% do.call(rbind, .)
+Vproj.random <- apply(Vproj.random1,2,mean)
+
+
+
+  Vproj.1 <- setNames(numeric(Cervid.L), nm = dimnames(Ps.cervidae)[[3]])
+  PC1D <- Vproj.1
+  PC2D <- Vproj.1
+  pPC1D <- Vproj.1
+  pPC2D <- Vproj.1
+  PAC1D <- Vproj.1
+  PAC2D <- Vproj.1
+
+    for(j in 1:dim(Ps.cervidae)[3]){
+      vcv <- Ps.cervidae[,,j]
+      Vproj.1[j] <- projected.variance(vcv,allo.vector, scale=T)
+      pPC1D[j] <- projected.variance(vcv,pPC1, scale=T)
+      pPC2D[j] <- projected.variance(vcv,pPC2, scale=T)
+      PAC1D[j] <- projected.variance(vcv,PaC1, scale=T)
+      PAC2D[j] <- projected.variance(vcv,PaC2, scale=T)
+      PC1D[j] <- projected.variance(vcv,PC1, scale=T)
+      PC2D[j] <- projected.variance(vcv,PC2, scale=T)
+  }
+
+
+  vproj.df.cervidae <- data.frame(Random = Vproj.random, CREA = Vproj.1, Divergence = Vproj.div[names(Vproj.1)], PC1 = PC1D, PC2 = PC2D,
+                       pPC1 = pPC1D, pPC2 = pPC2D, PAC1 = PAC1D, PAC2 = PAC2D)
+
+
+##########
+
+
+
+# Bovidae
+##########
+
+bovid.pPCA <- gm.prcomp(A=bovid.lm,phy=bovid.tree,
+                         GLS=T,transform = T)
+bovid.PACA <- gm.prcomp(A=bovid.lm,phy=bovid.tree,align.to.phy = T)
+
+PC1 <- bovid.pca$rotation[,1] ; PC2 <- bovid.pca$rotation[,2]
+pPC1 <- bovid.pPCA$rotation[,1] ; pPC2 <- bovid.pPCA$rotation[,2]
+PaC1 <- bovid.PACA$rotation[,1] ; PaC2 <- bovid.PACA$rotation[,2]
+
+Ps.bovidae <- Ps[,,which(rt2[,1]=="Bovidae")]
+
+nsim <- 499
+Nmin <- 27 # minimum of 27 specimens
+Vproj.random1 <- c()
+bovid.L <- dim(Ps.bovidae)[3]
+for(i in 1:nsim){
+  x <- numeric(bovid.L)
+    for(j in 1:dim(Ps.bovidae)[3]){
+      l <- dim(proc.list.20[[j]]$coords)[3]
+        vcv <- Ps.bovidae[,,j]
+        random.Z <- scalar1(sample(seq(-1,1,length.out=200),size=75))
+        x[j] <- projected.variance(vcv,random.Z)
+    }
+  Vproj.random1[[i]] <- x
+}
+
+Vproj.random1 <- Vproj.random1 %>% do.call(rbind, .)
+Vproj.random <- apply(Vproj.random1,2,mean)
+
+
+  Vproj.1 <- setNames(numeric(bovid.L), nm = dimnames(Ps.bovidae)[[3]])
+  PC1D <- Vproj.1
+  PC2D <- Vproj.1
+  pPC1D <- Vproj.1
+  pPC2D <- Vproj.1
+  PAC1D <- Vproj.1
+  PAC2D <- Vproj.1
+
+    for(j in 1:dim(Ps.bovidae)[3]){
+      vcv <- Ps.bovidae[,,j]
+      Vproj.1[j] <- projected.variance(vcv,allo.vector, scale=T)
+      pPC1D[j] <- projected.variance(vcv,pPC1, scale=T)
+      pPC2D[j] <- projected.variance(vcv,pPC2, scale=T)
+      PAC1D[j] <- projected.variance(vcv,PaC1, scale=T)
+      PAC2D[j] <- projected.variance(vcv,PaC2, scale=T)
+      PC1D[j] <- projected.variance(vcv,PC1, scale=T)
+      PC2D[j] <- projected.variance(vcv,PC2, scale=T)
+  }
+
+
+  vproj.df.bovidae <- data.frame(Random = Vproj.random, CREA = Vproj.1, Divergence = Vproj.div[names(Vproj.1)], PC1 = PC1D, PC2 = PC2D,
+                       pPC1 = pPC1D, pPC2 = pPC2D, PAC1 = PAC1D, PAC2 = PAC2D)
+
+
+##########
+
+
+
+getMeaningfulPCs(R.pca$d,n = dim(R.df$coords)[3]) # use the first 5 PCs
+
+R.bm <- mvBM(tree = R.df$tree, data = R.pca$x[,1:5], model = "BM1")
 
 
 save.image(file = "ruminant_data.RData") ; save.image(file = "data/ruminant_data.RData")

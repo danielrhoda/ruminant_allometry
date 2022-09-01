@@ -5,6 +5,7 @@
 library(colorblindcheck)
 library(shape)
 library(Rvcg)
+library(vioplot)
 library(ellipse)
 library(rgl)
 library(geomorph)
@@ -29,18 +30,21 @@ library(ggtree)
 library(ape)
 library(geiger)
 library(nlme)
+library(RRphylo)
 library(adephylo)
 library(phytools)
 library(geometry)
 library(tidyr)
 library(mvMORPH)
 library(mbend)
+library(sp)
 library(ploty)
 library(mvtnorm)
 library(ggtern)
 library(mixtools)
 library(ggtree)
 library(jjb)
+library(TreeTools)
 library(scales)
 library(colorBlindness)
 library(inlmisc)
@@ -130,7 +134,8 @@ tps <- function(target.lm,
                 buffer.x = 0.3,
                 buffer.y = 0.3){
 
-
+  # helper functions
+#####
 # from 'Morphometrics with R' by Claude
 # computes deformation of grid
   tps2d<-function(M, matr, matt){p<-dim(matr)[1]; q<-dim(M)[1]; n1<-p+3
@@ -172,16 +177,14 @@ cell.array <- bindArr(cell.array,rows,along=3)}
   }
   return(cell.array)
 }
+#####
 
 
-
-
-
-
+# scaling the landmarks
   reference.lm <- reference.lm*scale.lm
 
     # rotating the target landmark configuration onto the reference
-  target.lm <- rotonto(x = reference.lm, y = target.lm, scale = TRUE)$yrot
+target.lm <- rotonto(x = reference.lm, y = target.lm, scale = TRUE)$yrot
 
   # incorporating the magnitude of the shape deformation
   # by modifying the 'target.lm' object
@@ -503,7 +506,7 @@ TPS(target.lm = A2,reference.lm = B2, links=links.dor,
 #############
 # takes a vector and scales and returns a color palette accordingly
 make.color.vec <- function(x, n, pallette, rev = F){
-x1 <- cut(as.numeric(x),breaks=n)
+  x1 <- cut(as.numeric(x),breaks=n)
 if(!rev){idcolor<-pallette(n)}else{id.color<-rev(pallette(n))}
 x.cols <- 1:length(x1)
 for(i in 1:length(x.cols)){x.cols[[i]] <- idcolor[as.numeric(x1[i])]}
@@ -511,19 +514,17 @@ names(x.cols) <- names(x)
 return(x.cols)
 }
 
-
 centroid1 <- function(lm){apply(lm, 2, mean)}
-
 
 euc.dist <- function(x1, x2) sqrt(sum((x1 - x2) ^ 2))
 
+# automatically calculates face length from the landmark configurations
 face.length <- function(x){
   return(euc.dist(x[8,],x[18,])/ euc.dist(x[8,],x[3,]))
 } # same index as Bibi & Tyler 2022
 nasal.retraction <- function(x){
   return(euc.dist(x[8,],x[22,])/ euc.dist(x[8,],x[3,]))
 }
-
 
 
 # https://www.r-bloggers.com/2011/11/outersect-the-opposite-of-rs-intersect-function/
@@ -610,6 +611,7 @@ vector.angle <- function(x,y){
 rad2deg <- function(rad) {(rad * 180) / (pi)}
 deg2rad <- function(deg) {(deg * pi) / (180)}
 
+
 # calculates morphological integration va eigenvalue dispersion
 # default: deviation of the relative eigenvalue dispersion given the sample size
 eigen.var <- function(lm, sd = FALSE, rel = TRUE, sample = TRUE, cor = FALSE){
@@ -640,7 +642,8 @@ if(plot){
 }
 
 
-# returns n equally spaced colours from along the color wheel
+
+# returns n equally spaced colours from along the color wheel. from stack overflow
 colourWheel <- function(n = n, h = c(0, 360) + 15){
   if ((diff(h) %% 360) < 1) h[2] <- h[2] - 360/n
   hcl(h = (seq(h[1], h[2], length = n)), c = 100, l = 65)
@@ -677,8 +680,6 @@ unflatten <- function(x,  k = 3){
 # modified version of an internal RRPP function "addtree"
 # automatically calculates ancestors using fastAnc()
 addtree2 <- function(x, tree, col = "black", alpha = 1, lwd = 1){
-
-
   # if(anc == "fast"){
   #   anc.x <- cbind(fastAnc(tree = tree, x = x[,1]), fastAnc(tree = tree, x = x[,2]))}
   # if(anc == "ML"){
@@ -907,3 +908,37 @@ rdi <- function(x, nsim = 1000, nreps = NULL, cor = FALSE, replace = TRUE, seed 
 
 #############
 
+
+
+  # idk why this isn't automaitcally loading
+  # but this is from the RRPP package:
+  scaleCov <- function(Cov, scale. = 1, exponent = 1,
+                     scale.diagonal = FALSE,
+                     scale.only.diagonal = FALSE) {
+
+  dims <- dim(Cov)
+  if(length(dims) != 2)
+    stop("Cov must be a matrix", call. = FALSE)
+  if(dims[1] != dims[2])
+    stop("Cov must be a square matrix", call. = FALSE)
+  if(length(scale.) != 1)
+    stop("The scale. argument must be a single numeric value.",
+         call. = FALSE)
+  if(length(exponent) != 1)
+    stop("The exponent argument must be a single numeric value.",
+         call. = FALSE)
+  if(!is.numeric(scale.) || !is.numeric(exponent))
+    stop("Scaling parameters must be numeric.",
+         call. = FALSE)
+
+  D <- diag(diag(Cov))
+  C <- Cov - D
+  if(scale.only.diagonal) {
+    D <- scale. * D^(exponent)
+  } else {
+    C <- scale. * C^(exponent)
+    if(scale.diagonal) D <- scale. * D^(exponent)
+  }
+
+  C + D
+}
