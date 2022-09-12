@@ -1,0 +1,14 @@
+name: Ruminant_Dashboard
+title: Ruminant_Dashboard
+username:
+account: danielrhoda
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6958122
+bundleId: 6294851
+url: https://danielrhoda.shinyapps.io/Ruminant_Dashboard/
+when: 1663010145.93383
+lastSyncTime: 1663010145.93383
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: data/ruminant_app_data.RData|data/ruminant_app_data.rds
