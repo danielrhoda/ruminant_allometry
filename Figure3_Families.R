@@ -8,6 +8,13 @@
 plot.contour <- FALSE
 f2.CL <- 1.25
 
+cervid.size <- R.size[which(fam=='Cervidae')]
+cervid.size <- cervid.size[cervid.tree$tip.label] # making sure things are in the correct order
+
+bovid.size <- R.size[which(fam=='Bovidae')]
+bovid.size <- bovid.size[bovid.tree$tip.label] # making sure things are in the correct order
+
+
 # cervid phylomorphospace
 
 # predicting PC scores of minimum and maximum shapes in cervidae
@@ -35,7 +42,7 @@ cervid.mu <-  as.numeric(cervid.fit$theta)
 
 for (i in 1:100) {
 for (j in 1:100) {
-cervid.z[i,j] <- dmvnorm(c(cervid.x.points[i],cervid.y.points[j]), mu=cervid.mu,sigma=cervid.fit$sigma * cervid.dist)
+cervid.z[i,j] <- mixtools::dmvnorm(c(cervid.x.points[i],cervid.y.points[j]), mu=cervid.mu,sigma=cervid.fit$sigma * cervid.dist)
 }
 }
 #contour(cervid.x.points,cervid.y.points,cervid.z )
@@ -58,7 +65,7 @@ cervidPC1.d <- round(cervid.pca$d[1]/sum(cervid.pca$d),3)*100
 cervidPC2.d <- round(cervid.pca$d[2]/sum(cervid.pca$d),3)*100
 
 cervid.allo.plot <- plot(allo.Cervidae, type = "regression", predictor = cervid.size,reg.type ="RegScore", pch = 21, lwd = 2,
-                         bg = family.colors[1], cex = rescale.numeric(cervid.size,to = c(0.5,2)), xlab = "log-transformed centroid size")
+                         bg = family.colors[1], cex = rescale.numeric(cervid.size,to = c(1,3.5)), xlab = "log-transformed centroid size")
 cervid.preds <- shape.predictor(allo.Cervidae$GM$pgls.fitted, x= cervid.allo.plot$RegScore, Intercept = FALSE,
                         predmin = max(cervid.allo.plot$RegScore),
                         predmax = min(cervid.allo.plot$RegScore))
@@ -69,6 +76,7 @@ c.preds <- two.d.array(x)
 cervid.allo.scores2 <- c.preds %*% (cervid.pca$rotation)[,1:27]
 
 
+par(mar=c(5,5,3,2))
 # plotting the phylomorphospace
 plot(NA,xlim = range(cervid.pca$x[,1])*buf, ylim =range(cervid.pca$x[,2])*buf, asp = T,
      xlab = paste("PC1: ",cervidPC1.d,"% of variation",sep=""),
@@ -84,13 +92,13 @@ cervid.ellipse99 <- mixtools::ellipse(mu = as.numeric(cervid.fit$theta), sigma =
         alpha = 0.01, col = family.colors[1], lwd = 3, lty = 2)
 addtree2(bovid.mean.scores[,1:2],bovid.tree,"darkgray",1, lwd = 1)
 addtree2(cervid.pca$x[,1:2],cervid.tree,"black",1, lwd = 1)
-points(x=bovid.mean.scores[,1:2],pch= 15, col = addTrans(family.colors[2],255*0.5), cex = rescale.numeric(bovid.size,c(1,2.5)))
-points(x = cervid.pca$x[,1:2], pch=21,bg=family.colors[1],cex = rescale.numeric(cervid.size,c(1,2.5)))
+points(x=bovid.mean.scores[,1:2],pch= 15, col = addTrans(family.colors[2],255*0.5), cex = rescale.numeric(bovid.size,c(1,4)))
+points(x = cervid.pca$x[,1:2], pch=21,bg=family.colors[1],cex = rescale.numeric(cervid.size,c(1,4)))
 arrows(cervid.allo.scores2[1,1],cervid.allo.scores2[1,2],cervid.allo.scores2[2,1],cervid.allo.scores2[2,2],
-        lwd = 5)
+        lwd = 7)
 arrows(cervid.allo.scores2[1,1],cervid.allo.scores2[1,2],cervid.allo.scores2[2,1],cervid.allo.scores2[2,2],
-       col=family.colors[1], lwd = 3)
-points(cervid.fit$theta, bg = "goldenrod1", pch = 23, cex =2.5, lwd = 3, col = family.colors[1])
+       col="white", lwd = 3)
+points(cervid.fit$theta, bg = "goldenrod1", pch = 23, cex =2.5, lwd = 3)
 text(x = c(0.16,0.2025), y = c(0.05,0.05), labels = c('95%','99%'), cex = , col = family.colors[1])
 
 cervid.pts95.1 <- matrix( c(0,.14,.165,-.105,0.0965,.09,0,-0.111), nrow = 4, ncol=2)
@@ -156,7 +164,7 @@ bovid.mu <-  as.numeric(bovid.fit$theta)
 
 for (i in 1:100) {
 for (j in 1:100) {
-bovid.z[i,j] <- dmvnorm(c(bovid.x.points[i],bovid.y.points[j]), mu=bovid.mu,sigma=bovid.fit$sigma * bovid.dist)
+bovid.z[i,j] <- mixtools::dmvnorm(c(bovid.x.points[i],bovid.y.points[j]), mu=bovid.mu,sigma=bovid.fit$sigma * bovid.dist)
 }
 }
 #contour(bovid.x.points,bovid.y.points,bovid.z )
@@ -185,7 +193,7 @@ rownames(cervid.mean.scores) <- dimnames(cervid.lm)[[3]]
 bovidPC1.d <- round(bovid.pca$d[1]/sum(bovid.pca$d),3)*100
 bovidPC2.d <- round(bovid.pca$d[2]/sum(bovid.pca$d),3)*100
 
-bovid.allo.plot <- plot(allo.Bovidae, type = "regression", predictor = bovid.size ,reg.type ="RegScore", xlab = "log-transformed centroid size", pch =21, lwd = 2, bg = family.colors[2], cex = rescale.numeric(bovid.size,to=c(0.5,2)))
+bovid.allo.plot <- plot(allo.Bovidae, type = "regression", predictor = bovid.size ,reg.type ="RegScore", xlab = "log-transformed centroid size", pch =21, lwd = 2, bg = family.colors[2], cex = rescale.numeric(bovid.size,to=c(1,4)))
 bovid.preds <- shape.predictor(allo.Bovidae$GM$pgls.fitted, x= bovid.allo.plot$RegScore, Intercept = FALSE,
                         predmin = min(bovid.allo.plot$RegScore),
                         predmax = max(bovid.allo.plot$RegScore))
@@ -213,13 +221,13 @@ bovid.ellipse99 <- mixtools::ellipse(mu = as.numeric(bovid.fit$theta), sigma = b
 addtree2(cervid.mean.scores[,1:2],cervid.tree,"darkgray",1, lwd = 1)
 addtree2(bovid.pca$x[,1:2],bovid.tree,"black",1, lwd = 1)
 
-points(x=cervid.mean.scores[,1:2],pch= 16, col = addTrans(family.colors[1],255*0.5), cex = rescale.numeric(cervid.size,c(1,2.5)))
-points(x = bovid.pca$x[,1:2], pch=22,bg=family.colors[2],cex = rescale.numeric(bovid.size,c(1,2.5)))
+points(x=cervid.mean.scores[,1:2],pch= 16, col = addTrans(family.colors[1],255*0.5), cex = rescale.numeric(cervid.size,c(1,4)))
+points(x = bovid.pca$x[,1:2], pch=22,bg=family.colors[2],cex = rescale.numeric(bovid.size,c(1,4)))
 arrows(bovid.allo.scores2[1,1],bovid.allo.scores2[1,2],bovid.allo.scores2[2,1],bovid.allo.scores2[2,2],
-        lwd = 5)
+        lwd = 7)
 arrows(bovid.allo.scores2[1,1],bovid.allo.scores2[1,2],bovid.allo.scores2[2,1],bovid.allo.scores2[2,2],
-       col=family.colors[2], lwd = 3)
-points(bovid.fit$theta, bg = "goldenrod1", pch = 23, cex =2.5, lwd = 3, col = family.colors[2])
+       col= "white", lwd = 3)
+points(bovid.fit$theta, bg = "goldenrod1", pch = 23, cex =2.5, lwd = 3)
 
 text(x = c(0.11,0.15), y = c(0.05,0.05), labels = c('95%','99%'), cex = f2.CL, col = family.colors[2])
 
@@ -243,7 +251,7 @@ for(i in 1:NROW(scores)){
   tps(target.lm = shapes1[lat.drop,-3,i],
       reference.lm = mshape(bovid.lm)[lat.drop,-3],
       n.grid.col = 24,
-      scale.lm = 0.135, mag = 1,
+      scale.lm = 0.115, mag = 1,
       shade = T, shade.trans = 0.7,
       add = T, at = as.matrix(bovid.pts95)[i,],
       links = links.lat,plot.ref.links = T,
@@ -281,7 +289,7 @@ cervid.spec.n2 <- name.id[name.id[,3] %in% names(fam)[fam=="Cervidae"],1] ; name
 bovid.spec.n2 <- name.id[name.id[,3] %in% names(fam)[fam=="Bovidae"],1] ; names(bovid.spec.n2) <- name.id[name.id[,3] %in% names(fam)[fam=="Bovidae"],3]
 # loop that calculates specimen PC scores for each specimen (i) for each species (j)
 
-ALSPSIZE <- rescale.numeric(log(allspecs.size),c(0.5,2.5))
+ALSPSIZE <- rescale.numeric(log(allspecs.size),c(1,4))
 
 cervidspecs.scores <- c()
 cervid.SIZES <- c()
@@ -338,13 +346,13 @@ for(i in 1:length(cervidspecs.scores)){
   xy <- cervidspecs.scores[[i]][,1:2]
   points(xy, pch = 19, col = addTrans(family.colors[1],255*0.1), cex=cervid.SIZES[[i]])
   mixtools::ellipse(mu = colMeans(xy), sigma = cov(xy), alpha = 0.2, col = 'black', lwd = 4, lty = 1)
-  mixtools::ellipse(mu = colMeans(xy), sigma = cov(xy), alpha = 0.2, col = cervid.pop.col[i], lwd = 2, lty = 1)
+  mixtools::ellipse(mu = colMeans(xy), sigma = cov(xy), alpha = 0.2, col = family.colors[1], lwd = 2, lty = 1)
 }
 arrows(cervid.allo.scores2[1,1],cervid.allo.scores2[1,2],cervid.allo.scores2[2,1],cervid.allo.scores2[2,2],
-        lwd = 5)
+        lwd = 7)
 arrows(cervid.allo.scores2[1,1],cervid.allo.scores2[1,2],cervid.allo.scores2[2,1],cervid.allo.scores2[2,2],
-       col=family.colors[1], lwd = 3)
-points(cervid.fit$theta, bg = "goldenrod1", pch = 23, cex =2.5, lwd = 3, col = family.colors[1])
+       col= "white", lwd = 3)
+points(cervid.fit$theta, bg = "goldenrod1", pch = 23, cex =2.5, lwd = 3)
 
 
 plot(NA,xlim = range(bovid.pca$x[,1])*buf, ylim =range(bovid.pca$x[,2])*buf, asp = T,
@@ -357,13 +365,13 @@ for(i in 1:length(bovidspecs.scores)){
   xy <- bovidspecs.scores[[i]][,1:2]
   points(xy, pch = 15, col = addTrans(family.colors[2],255*0.1), cex = bovid.SIZES[[i]])
   mixtools::ellipse(mu = colMeans(xy), sigma = cov(xy), alpha = 0.2, col = 'black', lwd = 4, lty = 1)
-  mixtools::ellipse(mu = colMeans(xy), sigma = cov(xy), alpha = 0.2, col = bovid.pop.col[i], lwd = 2, lty = 1)
+  mixtools::ellipse(mu = colMeans(xy), sigma = cov(xy), alpha = 0.2, col = family.colors[2], lwd = 2, lty = 1)
 }
 arrows(bovid.allo.scores2[1,1],bovid.allo.scores2[1,2],bovid.allo.scores2[2,1],bovid.allo.scores2[2,2],
-        lwd = 5)
+        lwd = 7)
 arrows(bovid.allo.scores2[1,1],bovid.allo.scores2[1,2],bovid.allo.scores2[2,1],bovid.allo.scores2[2,2],
-       col=family.colors[2], lwd = 3)
-points(bovid.fit$theta, bg = "goldenrod1", pch = 23, cex =2.5, lwd = 3, col = family.colors[2])
+       col='white', lwd = 3)
+points(bovid.fit$theta, bg = "goldenrod1", pch = 23, cex =2.5, lwd = 3)
 
 
 
@@ -375,34 +383,29 @@ cervid.grid <- pca.grid(cervid.pca, PC1.segments = 10, PC2.segments = 10)
 cervid.z.nasalretraction <- apply(cervid.grid$shape.grid,3,nasal.retraction)
 cervid.z.facelength <- apply(cervid.grid$shape.grid,3,face.length)
 
-CNRsurf <- surf.ls(np = 3,cervid.grid$score.grid[,1], cervid.grid$score.grid[,2],cervid.z.nasalretraction)
+CNRsurf <- surf.ls(np = 2,cervid.grid$score.grid[,1], cervid.grid$score.grid[,2],cervid.z.nasalretraction)
 CNRmat <- trmat(CNRsurf,range(cervid.grid$score.grid[,1])[1],range(cervid.grid$score.grid[,1])[2],
                 range(cervid.grid$score.grid[,2])[1],range(cervid.grid$score.grid[,2])[2], n = 100)
 
-# plot(NA, xlim = range(cervid.grid$score.grid[,1])*0.875,
-#         ylim = range(cervid.grid$score.grid[,2])*0.875, xlab = "", ylab = "", axes = F, frame = T,
-#      main = "nasal retraction", cex.main = 2.5)
-#
-# .filled.contour(x=CNRmat$x,y=CNRmat$y,z=CNRmat$z, levels = seq(min(CNRmat$z), max(CNRmat$z), length.out = 24),
-#                 col = colorRampPalette(c('white', family.colors[1]))(24)) ; box()
-# contour(CNRmat, add=T, nlevels = 23, drawlabels =  F)
-contour(CNRmat, xlim = range(cervid.grid$score.grid[,1]),
-        ylim = range(cervid.grid$score.grid[,2]),
-        zlim = range(cervid.z.nasalretraction), add = F, nlevels = 40, drawlabels = F,
-        col = colorRampPalette(c('white',family.colors[1],family.colors[5]))(40), lwd = 4, axes = F, frame = T,
-        main= "nasal retraction", font.main = 1, cex.main = 2)
+# inset nasal retraction surface
+plot(NA, xlim = range(cervid.grid$score.grid[,1])*0.875,
+        ylim = range(cervid.grid$score.grid[,2])*0.875, xlab = "", ylab = "", axes = F, frame = T, asp = 1,
+     main = "Nasal Retraction", cex.main = 2.5)
+.filled.contour(x=CNRmat$x,y=CNRmat$y,z=CNRmat$z, levels = seq(min(CNRmat$z), max(CNRmat$z), length.out = 24),
+                col = colorRampPalette(c('white', family.colors[5], "black"))(24)) ; box()
 
 
-CFLsurf <- surf.ls(np = 3,cervid.grid$score.grid[,1], cervid.grid$score.grid[,2],cervid.z.facelength)
+CFLsurf <- surf.ls(np = 2,cervid.grid$score.grid[,1], cervid.grid$score.grid[,2],cervid.z.facelength)
 CFLmat <- trmat(CFLsurf,range(cervid.grid$score.grid[,1])[1],range(cervid.grid$score.grid[,1])[2],
                 range(cervid.grid$score.grid[,2])[1],range(cervid.grid$score.grid[,2])[2], n = 100)
 
+# inset face space
+plot(NA, xlim = range(cervid.grid$score.grid[,1])*0.875,
+        ylim = range(cervid.grid$score.grid[,2])*0.875, xlab = "", ylab = "", axes = F, frame = T, asp = 1,
+     main = "Face Length", cex.main = 2.5)
+.filled.contour(x=CFLmat$x,y=CFLmat$y,z=CFLmat$z, levels = seq(min(CFLmat$z), max(CFLmat$z), length.out = 24),
+                col = colorRampPalette(c('white', family.colors[5], "black"))(24)) ; box()
 
-contour(CFLmat, xlim = range(cervid.grid$score.grid[,1]),
-        ylim = range(cervid.grid$score.grid[,2]),
-        zlim = range(cervid.z.facelength), add = F, nlevels = 40, drawlabels = F,
-        col = colorRampPalette(c('white',family.colors[1],family.colors[5]))(40), lwd = 4, axes = F, frame = T,
-        main= "face length", font.main = 1, cex.main = 2)
 
 
 bovid.grid <- pca.grid(bovid.pca, PC1.segments = 10, PC2.segments = 10)
@@ -412,26 +415,26 @@ bovid.grid <- pca.grid(bovid.pca, PC1.segments = 10, PC2.segments = 10)
 bovid.z.nasalretraction <- apply(bovid.grid$shape.grid,3,nasal.retraction)
 bovid.z.facelength <- apply(bovid.grid$shape.grid,3,face.length)
 
-BNRsurf <- surf.ls(np = 3,bovid.grid$score.grid[,1], bovid.grid$score.grid[,2],bovid.z.nasalretraction)
+BNRsurf <- surf.ls(np = 2,bovid.grid$score.grid[,1], bovid.grid$score.grid[,2],bovid.z.nasalretraction)
 BNRmat <- trmat(BNRsurf,range(bovid.grid$score.grid[,1])[1],range(bovid.grid$score.grid[,1])[2],
                 range(bovid.grid$score.grid[,2])[1],range(bovid.grid$score.grid[,2])[2], n = 100)
 
-contour(BNRmat, xlim = range(bovid.grid$score.grid[,1]),
-        ylim = range(bovid.grid$score.grid[,2]),
-        zlim = range(bovid.z.nasalretraction), add = F, nlevels = 48, drawlabels = F,
-        col = colorRampPalette(c('white',family.colors[2], family.colors[6]))(64), lwd = 4, axes = F, frame = T,
-        main= "nasal retraction", font.main = 1, cex.main = 2)
+# inset face space
+plot(NA, xlim = range(bovid.grid$score.grid[,1])*0.875,
+        ylim = range(bovid.grid$score.grid[,2])*0.875, xlab = "", ylab = "", axes = F, frame = T, asp = 1,
+     main = "Nasal Retraction", cex.main = 2.5)
+.filled.contour(x=BNRmat$x,y=BNRmat$y,z=BNRmat$z, levels = seq(min(BNRmat$z), max(BNRmat$z), length.out = 24),
+                col = colorRampPalette(c('white', family.colors[6], "black"))(24)) ; box()
 
-BFLsurf <- surf.ls(np = 3,bovid.grid$score.grid[,1], bovid.grid$score.grid[,2],bovid.z.facelength)
+BFLsurf <- surf.ls(np = 2,bovid.grid$score.grid[,1], bovid.grid$score.grid[,2],bovid.z.facelength)
 BFLmat <- trmat(BFLsurf,range(bovid.grid$score.grid[,1])[1],range(bovid.grid$score.grid[,1])[2],
                 range(bovid.grid$score.grid[,2])[1],range(bovid.grid$score.grid[,2])[2], n = 100)
 
-contour(BFLmat, xlim = range(bovid.grid$score.grid[,1]),
-        ylim = range(bovid.grid$score.grid[,2]),
-        zlim = range(bovid.z.facelength), add = F, nlevels = 48, drawlabels = F,
-        col = colorRampPalette(c('white',family.colors[2],family.colors[6]))(64), lwd = 4, axes = F, frame = T,
-        main= "face length", font.main = 1, cex.main = 2)
-
+plot(NA, xlim = range(bovid.grid$score.grid[,1])*0.875,
+        ylim = range(bovid.grid$score.grid[,2])*0.875, xlab = "", ylab = "", axes = F, frame = T, asp = 1,
+     main = "Face Length", cex.main = 2.5)
+.filled.contour(x=BFLmat$x,y=BFLmat$y,z=BFLmat$z, levels = seq(min(BFLmat$z), max(BFLmat$z), length.out = 24),
+                col = colorRampPalette(c('white', family.colors[6], "black"))(24)) ; box()
 
 
 #########################

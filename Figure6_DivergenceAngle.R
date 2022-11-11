@@ -3,18 +3,6 @@
 # when species diverge from their ancestor more closely aligned to CREA, they diverge farther
 
 
-#### rang ####
-# from Watanabe 2020 "Detecting non-parallel evolution in multidimensional spaces'
-# doi: https://doi.org/10.1098/rsbl.2021.0638
-## Generate random angles.
-## Assumed range is [0, pi].
-rang <- function(n, k = 2) {
-    rs <- rt(n, k - 1)
-    ifelse(rs >= 0, atan(sqrt(k - 1) / rs), atan(sqrt(k - 1) / rs) + pi)
-}
-
-random.angles <- rang(10000, k = 75) %>% rad2deg
-
 
 
 # the plot:
@@ -22,9 +10,6 @@ par(mfrow=c(1,3), mar = c(5,6,4,2))
 plot(NA, xlim = range(div.crea.angle.sf),ylim = range(subfam.divergence),
      xlab = "", ylab = "Morphological Divergence",
      cex.lab = 3, main = "Ruminantia", cex.main = 3, cex.axis = 2)
-D <- density(random.angles)
-D$y <- D$y*1
-#polygon(D, col = "gray95", border = "gray75")
 box()
 points(div.crea.angle.sf,subfam.divergence,pch=pts.pch,bg=pts.col,
      cex = rescale.numeric(R.df$csize,c(1,3)))
@@ -98,4 +83,30 @@ anova(traj.crea.GLS.C <- gls(sfdC~dacC,correlation=corBrownian(phy=cervid.tree))
 
 dacB <- div.crea.angle.sf[which(rt[,1]=="Bovidae")] ; sfdB <- subfam.divergence[which(rt[,1]=="Bovidae")]
 anova(traj.crea.GLS.C <- gls(sfdB~dacB,correlation=corBrownian(phy=bovid.tree)))
+
+
+# subfamilies
+big.subfams <- names(which(table(rt[,2]) > 9))
+
+for(i in 1:length(big.subfams)){
+  part <- which(rt[,2] == big.subfams[i])
+  name <- names(part)
+  angle <- div.crea.angle.sf[name]
+  div <- subfam.divergence[name]
+  tree <- keep.tip(R.df$tree, tip= name)
+  GLS <- gls(div~angle, correlation = corBrownian(phy = tree))
+  print(big.subfams[i])
+  print(anova(GLS))
+}
+
+for(i in 1:length(big.subfams)){
+  part <- which(rt[,2] == big.subfams[i])
+  name <- names(part)
+  angle <- div.crea.angle.sf[name]
+  div <- subfam.divergence[name]
+  tree <- keep.tip(R.df$tree, tip= name)
+  LM <- lm(div~angle)
+  print(big.subfams[i])
+  print(anova(LM))
+}
 

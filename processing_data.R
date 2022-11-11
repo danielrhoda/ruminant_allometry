@@ -7,18 +7,23 @@ set.seed(6202021)
 family.colors <- c("#0080BD","#904010","#00BBE3","#BB662A","#005EA0","#60290C") # blue -> dark brown, with even darker tagged onto the back
 names(family.colors) <- c("Cervidae", "Bovidae", "Tragulidae", "Moschidae", "DarkBlue", "DarkBrown")
 col.pal.sunset <- colorRampPalette(GetColors(256, scheme = "sunset"))
+
+# universal color blind palette, with a couple shades of gray at the end
 CBP  <- c("#000000", "#E69F00", "#56B4E9", "#009E73",
                        "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "Gray30", "Gray70")
+col.pal <-  colorRampPalette(Blue2DarkRed18Steps)
+
 
 # reading in metadata from Haber 2016
 load("data/SpecimenInfo.Rdata")
 load("data/comptreesL.Rdata")
 load("data/ildefL.Rdata")
-full.inventory1 <- read.csv(file = "data/full_inventory.csv",row.names = 1)
+full.inventory1 <- read.csv(file = "data/full_inventory.csv",row.names = 1) # spreadsheet of covariate data (i.e., %grass, taxonomy, body mass estimations, etc.)
 
 # reading in landmark data from Haber 2016
 ruminant.lm.2d <- read.table(file = 'data/Haber2016_lm.tab',row.names = 1) # reading in the raw data
 ruminant.lm <- arrayspecs(A = ruminant.lm.2d, p = dim(ruminant.lm.2d)[2]/3, k = 3) # making it an array
+
 
 # for some reason the z axis is flipped in a lot of the specimens
 # this part flips those specimens
@@ -27,12 +32,15 @@ r1.pca <- gm.prcomp(r1$coords)
 l <- which(sign(r1.pca$x[,1])==-1)
 ruminant.lm[,3,l] <- -ruminant.lm[,3,l]
 
-# the landmark data for Saiga tatarica and Megaloceros giganteus
+
+
+# the landmark data for Saiga tatarica and Megaloceros giganteus, rotated onto the first specimen
 saiga <- read.pts(file = "data/saiga.pts")
 saiga <- rotonto(x = ruminant.lm[1:25,,1], y = saiga, scale = T)$yrot
 
 Megaloceros <- read.pts(file = "data/Megaloceros_noantlers.pts")
 Megaloceros <- rotonto(x = ruminant.lm[1:25,,1], y = Megaloceros, scale = T)$yrot
+
 
 # array of all the landmark data
 ruminants <- bindArr(ruminant.lm[1:25,,],saiga,Megaloceros,along=3)
@@ -53,7 +61,7 @@ haber.tree <- comptreesL$FV
 
 # putting the new Odocoileus species shorthand into the tree Annat Haber 2016 used
 haber.tree2 <- add.tips(tree = haber.tree, tips = c("Odo_he_sp","Odo_vi_sp","Saiga","Megaloceros"), where = 240)
-# the topology here is wrong but it doesn't matter because I'm not using this topology, I'm using Upham 2019
+# the topology here is wrong but it doesn't matter because I'm not using this topology, I'm using Upham 2019, this part is just for sorting out names
 haber.tree3 <- drop.tip(phy = haber.tree2, tip = haber.tree2$tip.label[28:33])
 haber.tree <- haber.tree3
 names(haber.tree$tip.label)[210] <- "Odocoileus hemionus"
@@ -67,6 +75,7 @@ name.id <- matrix(data = NA, nrow = length(haber.tree$tip.label),ncol=3)
 name.id[,1] <- haber.tree$tip.label
 name.id[,2] <- names(haber.tree$tip.label)
 name.id[,3] <- str_replace(names(haber.tree$tip.label), pattern = " ", replacement = "_")
+
 
 # making a vector of all the species present in the dataset
 specs.FV <- unique(si.FV)
@@ -196,12 +205,30 @@ skull.size.body.mass.reg <- lm(log(R.size)[BM.CS.names]~log(mBM[BM.CS.names]))
 R.size <- log(R.size)
 
 # estimating the centroid sizes of Saiga and the irish elk based off of their maximum body masses
+# there's a linear relationship between centroid size of the skull and body mass
 R.size["Saiga_tatarica"] <- log(mBM["Saiga_tatarica"])*skull.size.body.mass.reg$coefficients[2] + skull.size.body.mass.reg$coefficients[1]
 R.size["Megaloceros_giganteus"] <- log(mBM["Megaloceros_giganteus"])*skull.size.body.mass.reg$coefficients[2] + skull.size.body.mass.reg$coefficients[1]
 
 
+
 # principal components analysis of mean shape for each species
 R.pca <- gm.prcomp(A=R,phy=R.tree)
+
+# all the individual specimens in PC morphospace
+as.proc <- gpagen(ruminants)
+allspecs <- as.proc$coords
+allspecs.size <- as.proc$Csize
+
+# projecting the individual specimens into the interspecific morphospace
+allspecs.scores <- matrix(nrow=dim(allspecs)[3],ncol=dim(R.pca$rotation)[2])
+for(i in 1:dim(allspecs)[3]){
+  x <- rotonto(mshape(R),allspecs[,,i],scale=F)$yrot - mshape(R)
+  x <- bindArr(x,x,along=3)
+  a.preds <- two.d.array(x)
+  allspecs.scores[i,] <- a.preds[1,] %*% R.pca$rotation
+}
+
+
 
 
 ###
@@ -215,7 +242,7 @@ common.ancestor <- ancestors[,,3]
 # shapes of the ancestors of Bovidae, Cervidae, and Ruminantia
 
 
-
+# list of species and their family
 Cervidae2 <- Descendants(R.tree, node = 137, type =  "tips")[[1]]
 Bovidae2 <- Descendants(R.tree, node = 172, type =  "tips")[[1]]
 Moschidae2 <- Descendants(R.tree, node = 170, type =  "tips")[[1]]
@@ -381,7 +408,8 @@ Mr <- mshape(R.df$coords)
 Vproj <- lapply(proc.list.20, function(x){
   A <- x$coords
   for(i in 1:dim(A)[3]){
-    A[,,i] <- rotonto(x = Mr, y = A[,,i])$yrot}
+    A[,,i] <- rotonto(x = Mr, y = A[,,i])$yrot
+    }
   vcv <- var(two.d.array(A))
   projected.variance(vcv,allo.vector)
 }) %>% unlist
@@ -443,6 +471,8 @@ names(subfam.divergence) <- rownames(pts)
 
 
 # While accounting for clade age
+# not presenting this though, the results are nearly identical
+# this is == evolutionary rate
 
 # subfam.divergence2 <- numeric(length(nrow(pts)))
 # for(i in 1:nrow(pts)){

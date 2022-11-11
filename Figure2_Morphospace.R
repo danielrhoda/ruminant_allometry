@@ -1,6 +1,8 @@
 # Figure 2
 # interspecific morphospace
 
+load("ruminant_data.Rdata")
+
 # first, interspecific allometry... to measure intraspecific PC1s against
 # PGLS - axis of evolutionary allometry of cranial shape in ruminants
 R.size.pgls <- procD.pgls(f1 = coords~csize, phy = tree, data = R.df)
